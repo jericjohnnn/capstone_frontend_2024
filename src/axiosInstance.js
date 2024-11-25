@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Create an Axios instance
 const axiosInstance = axios.create({
-  baseURL: 'https://tudlo.cctcccs.com/', 
+  baseURL: import.meta.env.VITE_API_BASE_URL,
 });
 
 // Add a request interceptor
