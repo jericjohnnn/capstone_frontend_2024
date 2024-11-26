@@ -2,30 +2,31 @@
   <main class="w-full min-h-screen bg-blue-100">
     <SideBar>
       <!-- Container with gap between grid items -->
-      <div class="grid grid-cols-1 gap-4 min-h-screen py-5 md:grid-rows-[auto,auto,1fr] md:grid-flow-col">
-        
+      <div
+        class="grid grid-cols-1 gap-4 min-h-screen py-5 md:grid-rows-[auto,auto,1fr] md:grid-flow-col"
+      >
         <!-- Breadcrumb Section -->
-        <div class="w-full  hidden md:block md:row-span-1 ">
+        <div class="w-full hidden md:block md:row-span-1">
           <BreadCrumb
             :breadcrumbs="[{ label: 'Home', route: '/student/home' }]"
           />
         </div>
 
         <!-- Search Section -->
-        <div class="w-full pb-4 md:pb-10 md:row-span-1 ">
-          <TutorSearch></TutorSearch>
+        <div class="w-full pb-4 md:pb-10 md:row-span-1">
+          <TutorSearch
+            @update:search-results="updateSearchResults"
+          ></TutorSearch>
           <div>
             <AllSubjects></AllSubjects>
           </div>
         </div>
 
         <!-- Main Content Area -->
-        <div class="grid grid-cols-1  md:grid-cols-9 gap-4   md:row-span-1 ">
-          
+        <div class="grid grid-cols-1 md:grid-cols-9 gap-4 md:row-span-1">
           <!-- md:max-h-[calc(100vh-14rem)] -->
           <!-- Left Column - Split into two rows -->
-          <div class="grid grid-rows-[1fr,auto] gap-4 md:col-span-4  ">
-            
+          <div class="grid grid-rows-[1fr,auto] gap-4 md:col-span-4">
             <!-- Tutor Cards Section -->
             <div class="w-full min-h-96">
               <div
@@ -48,19 +49,21 @@
             </div>
 
             <!-- Pagination Section -->
-            <div class="w-full ">
+            <div class="w-full">
               <PaginationLinks
                 :links="paginationLinks"
                 :current-page="currentPage"
                 :last-page="lastPage"
-                class="md:w-11/12 "
+                class="md:w-11/12"
               />
             </div>
           </div>
 
           <!-- max-h-[calc(100vh-5rem)] adjust for xl -->
           <!-- Tutor Details Section -->
-          <div class="w-full hidden md:block md:col-span-5  max-h-[calc(100vh-14rem)] xl:max-h-[calc(100vh-14rem)]"> 
+          <div
+            class="w-full hidden md:block md:col-span-5 max-h-[calc(100vh-14rem)] xl:max-h-[calc(100vh-14rem)]"
+          >
             <div
               v-if="tutorDetailsLoading"
               class="flex justify-center items-center h-full"
@@ -68,7 +71,7 @@
               <LoaderSpinner />
             </div>
             <div v-else-if="tutorDetails" class="h-full">
-              <TutorDetailsCard :tutor="tutorDetails" class="h-full border"/>
+              <TutorDetailsCard :tutor="tutorDetails" class="h-full border" />
             </div>
             <div
               v-else
@@ -80,12 +83,11 @@
         </div>
       </div>
     </SideBar>
-    
+
     <FooterSection class="md:hidden" />
     <HelpButton></HelpButton>
   </main>
 </template>
-
 
 <script setup>
 import FooterSection from '@/sections/FooterSection.vue'
@@ -116,6 +118,13 @@ const paginationLinks = ref([])
 const isMobileView = ref(window.innerWidth < 640)
 const resizeHandler = () => {
   isMobileView.value = window.innerWidth < 640
+}
+
+const updateSearchResults = searchedTutors => {
+  tutors.value = searchedTutors.data
+  currentPage.value = searchedTutors.current_page
+  lastPage.value = searchedTutors.last_page
+  paginationLinks.value = searchedTutors.links
 }
 
 const fetchTutors = async (page = 1) => {
