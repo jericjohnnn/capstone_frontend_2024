@@ -1,8 +1,10 @@
 <template>
   <div class="mb-2.5">
-    <div class=" bg-blue-50 border border-white shadow-sm rounded-xl hover:shadow-md focus:outline-none focus:shadow-lg transition ">
+    <div
+      class="bg-blue-50 border border-white shadow-sm rounded-xl hover:shadow-md focus:outline-none focus:shadow-lg transition"
+    >
       <!-- Tutor Info Section -->
-      <div class="p-3  flex items-center justify-between">
+      <div class="p-3 flex items-center justify-between">
         <div class="flex items-center gap-x-3">
           <div class="shrink-0">
             <img
@@ -12,15 +14,19 @@
             />
           </div>
 
-          <div class="flex flex-col gap-1 ">
-            <h1 class="text-sm md:text-base font-bold text-gray-800  line-clamp-1">
+          <div class="flex flex-col gap-1">
+            <h1
+              class="text-sm md:text-base font-bold text-gray-800 line-clamp-1"
+            >
               {{ tutor.tutor_name }}
             </h1>
             <div class="flex items-center gap-2">
               <span
+                v-for="(subject, index) in tutor.tutor_subjects"
+                :key="index"
                 class="inline-flex items-center py-0.5 px-2 rounded-full text-xs font-medium bg-blue-100 text-blue-800"
               >
-                {{ tutor.tutor_subjects[tutor.tutor_subjects.length-1].abbreviation }}
+                {{ subject.abbreviation }}
               </span>
             </div>
           </div>
