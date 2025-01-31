@@ -2,7 +2,7 @@
   <div
     class="flex flex-col bg-white border shadow-sm rounded-xl h-full hover:shadow-lg transition"
   >
-    <NotificationToast 
+    <NotificationToast
       :show="notification.show"
       :message="notification.message"
       :type="notification.type"
@@ -343,6 +343,10 @@
         <div class="flex items-center gap-3 mb-4">
           <h3 class="text-lg font-semibold text-gray-900">Ratings</h3>
           <StarRating :rating="averageRatings" class="mt-1"></StarRating>
+          |
+          <span class="text-gray-500 font-medium underline">
+          {{ tutor.ratings.length }}
+          Rated</span>
         </div>
 
         <div
@@ -351,7 +355,6 @@
         >
           <p>No ratings information available.</p>
         </div>
-
         <div v-else>
           <RatingsCarousel
             class="w-full"
@@ -452,7 +455,7 @@ const truncatedBio = computed(() => {
     : props.tutor.biography
 })
 
-// 
+//
 
 
 
@@ -504,7 +507,7 @@ const handleReportSubmit = async () => {
     await axiosInstance.post('api/create-report', reportData)
     showNotification('Report submitted successfully', 'success')
     isReportModalOpen.value = false
-    
+
     // Reset form
     reportReason.value = ''
     reportMessage.value = ''

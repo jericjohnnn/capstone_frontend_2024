@@ -31,10 +31,12 @@
             </div>
           </div>
         </div>
-
         <!-- Rating and Button -->
         <div class="shrink-0 flex flex-col items-end gap-2">
+        <span class="flex gap-2 text-xs underline">
           <StarRating :rating="tutor.tutor_rating" class=""></StarRating>
+          {{ tutor.tutor_rating ? tutor.tutor_rating : '0' }}
+        </span>
           <button
             @click="triggerSelectTutor"
             type="button"
