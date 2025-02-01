@@ -27,6 +27,7 @@
               </div>
 
               <TutorProfileRate></TutorProfileRate>
+              <TutorLinks></TutorLinks>
 
               <TutorProfileDetails></TutorProfileDetails>
             </div>
@@ -87,6 +88,7 @@ import StarRating from '@/components/StarRating.vue'
 import { computed, onMounted } from 'vue'
 import axiosInstance from '@/axiosInstance'
 import { getUserData } from '@/utils/user'
+import TutorLinks from '@/components/tutor/TutorProfile/TutorLinks.vue'
 
 
 const userData = getUserData()
