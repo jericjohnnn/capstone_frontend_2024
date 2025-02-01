@@ -12,7 +12,10 @@
             <div class="space-y-4">
               <div>
                 <h3 class="font-semibold">Ratings:</h3>
+                <span class="flex items-center gap-2">
                 <StarRating :rating="averageRatings ? averageRatings : 0"></StarRating>
+                <span class="text-gray-500">{{ userData.ratings.length }} Rated</span>
+              </span>
               </div>
 
               <TutorProfileSubjects></TutorProfileSubjects>
@@ -24,6 +27,7 @@
               </div>
 
               <TutorProfileRate></TutorProfileRate>
+              <TutorLinks></TutorLinks>
 
               <TutorProfileDetails></TutorProfileDetails>
             </div>
@@ -84,18 +88,10 @@ import StarRating from '@/components/StarRating.vue'
 import { computed, onMounted } from 'vue'
 import axiosInstance from '@/axiosInstance'
 import { getUserData } from '@/utils/user'
+import TutorLinks from '@/components/tutor/TutorProfile/TutorLinks.vue'
 
 
 const userData = getUserData()
-
-// TESTINGGG
-
-// TESTINGGG
-
-// const route = useRoute()
-
-// const parsedUserData = JSON.parse(localStorage.getItem('user_data') || '{}')
-// const userData = ref(parsedUserData)
 
 const averageRatings = computed(() => {
   const ratings = userData.value.ratings.map(rating => rating.rate)

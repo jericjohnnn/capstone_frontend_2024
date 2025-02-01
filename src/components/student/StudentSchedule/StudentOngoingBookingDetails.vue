@@ -135,6 +135,18 @@
                 </span>
               </div>
 
+               <!-- CLASS LINK -->
+               <div class="w-full">
+                <h2 class="font-medium w-full">Class Link:</h2>
+                <a
+                  :href="bookDetails.class_link"
+                  target="_blank"
+                  class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm w-full text-center"
+                >
+                  {{ bookDetails.class_link || 'N/A' }}
+                </a>
+              </div>
+
               <!-- Date and Time -->
               <div v-if="bookDetails.messages?.length">
                 <h2 class="font-medium w-full mb-2">Date & Time:</h2>
