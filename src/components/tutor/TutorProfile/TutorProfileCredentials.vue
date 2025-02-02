@@ -9,13 +9,16 @@
       <!-- Credential Images List -->
       <div
         v-for="(credential, index) in userData.credentials"
-        :key="index"
+        :key="credential.id"
         class="p-4 bg-white border rounded-lg transition-all"
       >
         <!-- Display Credential Images -->
         <div class="flex flex-col items-center gap-2">
           <span class="w-24 h-24 flex items-center justify-center">
-            <Image :src="credential.image" alt="Image" preview />
+            <span v-if="credential.image">
+              <Image :src="credential.image" alt="Image" preview />
+            </span>
+            <span v-else> N/A </span>
           </span>
           <button
             @click="deleteCredential(credential.id, index)"
@@ -34,7 +37,12 @@
     >
       + Add Credentials
     </button>
-    <input type="file" ref="fileInput" style="display: none" @change="addNewCredential" />
+    <input
+      type="file"
+      ref="fileInput"
+      style="display: none"
+      @change="addNewCredential"
+    />
   </div>
 </template>
 
@@ -44,35 +52,32 @@ import axiosInstance from '@/axiosInstance'
 import { getUserData } from '@/utils/user'
 import NotificationToast from '@/components/Reusables/NotificationToast.vue'
 import { useNotification } from '@/composables/useNotification'
-import Image from 'primevue/image';
+import Image from 'primevue/image'
 
 const userData = getUserData()
 const { notification, showNotification } = useNotification()
 
-const fileInput = ref(null);
+const fileInput = ref(null)
 
 const openFileSelector = () => {
-  fileInput.value.click();
-};
+  fileInput.value.click()
+}
 
-const addNewCredential = async (event) => {
-  const file = event.target.files[0];
+const addNewCredential = async event => {
+  const file = event.target.files[0]
 
-  if(!file) {
-    return;
+  if (!file) {
+    return
   }
 
-  const formData = new FormData();
-  formData.append('image', file);
+  const formData = new FormData()
+  formData.append('image', file)
 
   try {
-    const response = await axiosInstance.post(
-      '/api/add-credential',
-      formData,
-    )
+    const response = await axiosInstance.post('/api/add-credential', formData)
     userData.value.credentials.push(response.data.credential)
     localStorage.setItem('user_data', JSON.stringify(userData.value))
-    console.log(response.data);
+    console.log(response.data.credential)
     showNotification('New credential added successfully!')
   } catch (error) {
     console.error('Failed to add new credential:', error)

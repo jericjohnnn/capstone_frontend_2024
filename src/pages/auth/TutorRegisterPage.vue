@@ -177,8 +177,52 @@
             </div>
           </div>
 
-          <!-- Step 3: Account Information -->
+          <!-- Step 3: Upload Credentials -->
           <div v-if="currentStep === 3" class="space-y-4">
+            <h3 class="text-lg font-semibold text-gray-700 mb-4">
+              Account Credentials
+            </h3>
+
+            <!-- Image Previews -->
+            <div class="flex flex-wrap gap-4">
+              <div
+                v-for="(image, index) in selectedImages"
+                :key="index"
+                class="relative w-24 h-24 border rounded-lg"
+              >
+                <img
+                  :src="image.preview"
+                  class="w-full h-full object-cover rounded-lg"
+                />
+                <button
+                  @click="removeImage(index)"
+                  class="absolute top-1 right-1 text-red-500 bg-white rounded-full p-1"
+                >
+                  ✕
+                </button>
+              </div>
+            </div>
+
+            <!-- Image Selection Button -->
+            <button
+              type="button"
+              @click="openFileSelector"
+              class="w-full py-2 px-4 text-sm text-blue-600 border border-blue-600 rounded-lg hover:bg-blue-50 transition-colors"
+            >
+              + Add Credentials
+            </button>
+            <input
+              type="file"
+              ref="fileInput"
+              accept="image/*"
+              style="display: none"
+              @change="handleImageSelect"
+            />
+            <button type="button" @click="console.log(selectedImages)">CLICK ME</button>
+          </div>
+
+          <!-- Step 4: Account Information -->
+          <div v-if="currentStep === 4" class="space-y-4">
             <h3 class="text-lg font-semibold text-gray-700 mb-4">
               Account Information
             </h3>
@@ -234,14 +278,14 @@
             </button>
             <button
               type="button"
-              v-if="currentStep < 3"
+              v-if="currentStep < 4"
               @click="nextStep"
               class="px-6 py-2.5 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors duration-200"
             >
               Next
             </button>
             <button
-              v-if="currentStep === 3"
+              v-if="currentStep === 4"
               type="submit"
               :disabled="!form.agreeToTerms || isLoading"
               class="px-6 py-2.5 text-sm font-medium rounded-lg transition-colors duration-200 flex items-center justify-center"
@@ -274,13 +318,40 @@ import LoaderSpinner from '@/components/Reusables/LoaderSpinner.vue'
 
 const { notification, showNotification } = useNotification()
 
+//
+const fileInput = ref(null)
+const selectedImages = ref([])
+
+const openFileSelector = () => {
+  fileInput.value.click()
+}
+
+const handleImageSelect = event => {
+  const file = event.target.files[0]
+  if (!file) {
+    return
+  }
+  if (file) {
+    const reader = new FileReader()
+    reader.onload = e => {
+      selectedImages.value.push({
+        file: file,
+        preview: e.target.result,
+      })
+    }
+    reader.readAsDataURL(file)
+  }
+  event.target.value = ''
+}
+
+const removeImage = index => {
+  selectedImages.value.splice(index, 1)
+}
+//
+
 const currentStep = ref(1)
 
-const steps = ref([
-  { id: 1, label: 'Account Information' },
-  { id: 2, label: 'Personal Information' },
-  { id: 3, label: 'Education Information' },
-])
+const steps = ref([{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }])
 
 const form = reactive({
   email: '',
@@ -400,6 +471,10 @@ const handleSubmit = async () => {
   }
 
   isLoading.value = true
+
+  //TODO: Add image upload TO REGISTER TUTOR
+  // const formData = new FormData()
+  // formData.append('images[]', selectedImages.value)
 
   const payload = {
     user_type_id: 2,
