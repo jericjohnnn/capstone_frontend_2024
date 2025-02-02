@@ -56,10 +56,16 @@
             </div>
 
             <div class="p-4 bg-white rounded-lg shadow-md">
+              <h3 class="font-semibold">Credentials</h3>
+              <TutorProfileCredentials></TutorProfileCredentials>
+            </div>
+
+            <div class="p-4 bg-white rounded-lg shadow-md">
               <div v-if="userData.ratings.length <= 0">
                 <p>No ratings yet</p>
               </div>
               <div v-else>
+                <h3 class="font-semibold">Ratings</h3>
                 <RatingsCarousel
                   class="w-full"
                   :ratingComments="ratingComments"
@@ -95,6 +101,7 @@ import { computed, onMounted } from 'vue'
 import axiosInstance from '@/axiosInstance'
 import { getUserData } from '@/utils/user'
 import TutorLinks from '@/components/tutor/TutorProfile/TutorLinks.vue'
+import TutorProfileCredentials from '@/components/tutor/TutorProfile/TutorProfileCredentials.vue'
 
 const userData = getUserData()
 
