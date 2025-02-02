@@ -6,16 +6,22 @@
         <TutorProfileHeader></TutorProfileHeader>
 
         <!-- Profile Content -->
-        <div class="flex flex-col md:flex-row mt-4 space-y-4 md:space-y-0 md:space-x-4">
+        <div
+          class="flex flex-col md:flex-row mt-4 space-y-4 md:space-y-0 md:space-x-4"
+        >
           <!-- Subjects, Rating, and Availability -->
           <section class="w-full md:w-1/3 p-4 bg-white rounded-lg shadow-md">
             <div class="space-y-4">
               <div>
                 <h3 class="font-semibold">Ratings:</h3>
                 <span class="flex items-center gap-2">
-                <StarRating :rating="averageRatings ? averageRatings : 0"></StarRating>
-                <span class="text-gray-500">{{ userData.ratings.length }} Rated</span>
-              </span>
+                  <StarRating
+                    :rating="averageRatings ? averageRatings : 0"
+                  ></StarRating>
+                  <span class="text-gray-500"
+                    >{{ userData.ratings.length }} Rated</span
+                  >
+                </span>
               </div>
 
               <TutorProfileSubjects></TutorProfileSubjects>
@@ -50,21 +56,27 @@
             </div>
 
             <div class="p-4 bg-white rounded-lg shadow-md">
+              <h3 class="font-semibold">Credentials</h3>
+              <TutorProfileCredentials></TutorProfileCredentials>
+            </div>
+
+            <div class="p-4 bg-white rounded-lg shadow-md">
               <div v-if="userData.ratings.length <= 0">
                 <p>No ratings yet</p>
               </div>
               <div v-else>
+                <h3 class="font-semibold">Ratings</h3>
                 <RatingsCarousel
-                class="w-full"
-                :ratingComments="ratingComments"
-              />
-            </div>
+                  class="w-full"
+                  :ratingComments="ratingComments"
+                />
+              </div>
             </div>
           </section>
         </div>
       </main>
     </SideBar>
-    <FooterSection class="md:hidden"/>
+    <FooterSection class="md:hidden" />
 
     <HelpButton />
   </main>
@@ -89,7 +101,7 @@ import { computed, onMounted } from 'vue'
 import axiosInstance from '@/axiosInstance'
 import { getUserData } from '@/utils/user'
 import TutorLinks from '@/components/tutor/TutorProfile/TutorLinks.vue'
-
+import TutorProfileCredentials from '@/components/tutor/TutorProfile/TutorProfileCredentials.vue'
 
 const userData = getUserData()
 
@@ -110,13 +122,11 @@ const fetchTutorProfileInfo = async () => {
   try {
     const response = await axiosInstance.get(`/api/tutor-info`)
     userData.value = response.data.tutor
-    localStorage.setItem('user_data', JSON.stringify(userData.value));
+    localStorage.setItem('user_data', JSON.stringify(userData.value))
   } catch (err) {
     console.error('Error fetching tutor details:', err)
   }
 }
-
-
 
 onMounted(fetchTutorProfileInfo)
 </script>
