@@ -218,7 +218,6 @@
               style="display: none"
               @change="handleImageSelect"
             />
-            <button type="button" @click="console.log(selectedImages)">CLICK ME</button>
           </div>
 
           <!-- Step 4: Account Information -->
@@ -318,9 +317,9 @@ import LoaderSpinner from '@/components/Reusables/LoaderSpinner.vue'
 
 const { notification, showNotification } = useNotification()
 
-//
 const fileInput = ref(null)
 const selectedImages = ref([])
+const originalImages = ref([]);
 
 const openFileSelector = () => {
   fileInput.value.click()
@@ -331,6 +330,7 @@ const handleImageSelect = event => {
   if (!file) {
     return
   }
+
   if (file) {
     const reader = new FileReader()
     reader.onload = e => {
@@ -338,16 +338,17 @@ const handleImageSelect = event => {
         file: file,
         preview: e.target.result,
       })
-    }
-    reader.readAsDataURL(file)
+      originalImages.value.push(file);
+    };
+    reader.readAsDataURL(file);
   }
-  event.target.value = ''
+  event.target.value = ""
 }
 
-const removeImage = index => {
-  selectedImages.value.splice(index, 1)
-}
-//
+const removeImage = (index) => {
+  selectedImages.value.splice(index, 1);
+  originalImages.value.splice(index, 1);
+};
 
 const currentStep = ref(1)
 
@@ -472,29 +473,29 @@ const handleSubmit = async () => {
 
   isLoading.value = true
 
-  //TODO: Add image upload TO REGISTER TUTOR
-  // const formData = new FormData()
-  // formData.append('images[]', selectedImages.value)
-
-  const payload = {
-    user_type_id: 2,
-    email: form.email,
-    password: form.password,
-    password_confirmation: form.confirmPassword,
-    first_name: form.firstName,
-    last_name: form.lastName,
-    address: form.address,
-    birthdate: form.birthdate,
-    gender: form.gender,
-    subjects: form.subjects,
-    contact_number: form.contactNo,
-    school_id_number: form.schoolIdNumber,
-    course: form.course,
-    year: form.year,
-  }
+  const payLoad = new FormData()
+  payLoad.append('user_type_id', 2)
+  payLoad.append('email', form.email)
+  payLoad.append('password', form.password)
+  payLoad.append('password_confirmation', form.confirmPassword)
+  payLoad.append('first_name', form.firstName)
+  payLoad.append('last_name', form.lastName)
+  payLoad.append('address', form.address)
+  payLoad.append('birthdate', form.birthdate)
+  payLoad.append('gender', form.gender)
+  payLoad.append('contact_number', form.contactNo)
+  payLoad.append('school_id_number', form.schoolIdNumber)
+  payLoad.append('course', form.course)
+  payLoad.append('year', form.year)
+  form.subjects.forEach((subject) => {
+    payLoad.append('subjects[]', subject);
+  });
+  originalImages.value.forEach((file) => {
+    payLoad.append('images[]', file);
+  });
 
   try {
-    const response = await axiosInstance.post('api/register', payload)
+    const response = await axiosInstance.post('api/register', payLoad)
     const { user_email, user_full_name, user_type, user_data, token } =
       response.data
 
