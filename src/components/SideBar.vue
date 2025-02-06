@@ -39,21 +39,22 @@
     <!-- Sidebar -->
     <div
       :class="[
-        'fixed inset-y-0 start-0 z-50 w-[260px] bg-blue-600 transition-transform duration-300 lg:translate-x-0 lg:block',
-        isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
+        'fixed inset-y-0 start-0 z-50 w-[260px] transition-transform duration-300 lg:translate-x-0 lg:block',
+        isSidebarOpen ? 'translate-x-0' : '-translate-x-full',
+        userType === 'Tutor' ? 'bg-white' : 'bg-blue-600'
       ]"
     >
       <div class="relative flex flex-col h-full">
         <!-- Logo Section -->
         <div class="px-8 pt-4">
-          <a 
-            @click="router.push('/')" 
+          <a
+            @click="router.push('/')"
             class="flex-none cursor-pointer flex py-5"
           >
-            <img 
-              src="@/assets/logo.svg" 
+            <img
+              src="@/assets/logo.svg"
               alt="Logo"
-              class="h-7" 
+              class="h-7"
             />
           </a>
         </div>
@@ -67,10 +68,14 @@
                 <li v-for="(item, index) in tutorNavItems" :key="index">
                   <router-link
                     :to="{ name: item.route }"
-                    class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-white rounded-md hover:bg-white/10 focus:outline-none focus:bg-white/10 transition-colors duration-200"
-                    :class="{ 'bg-white/10': $route.name === item.route }"
+                    class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm rounded-md transition-colors duration-200"
+                    :class="[
+                      $route.name === item.route
+                        ? 'bg-blue-600 text-white'
+                        : 'text-blue-600 hover:bg-blue-50'
+                    ]"
                   >
-                    <component :is="item.icon" />
+                    <component :is="item.icon" :class="userType === 'Tutor' ? ($route.name === item.route ? 'fill-white' : 'fill-blue-600') : 'fill-white'"/>
                     {{ item.label }}
                   </router-link>
                 </li>
@@ -95,9 +100,12 @@
 
             <!-- User Profile & Logout Section -->
             <div class="mt-auto">
-              <hr class="my-4 border-white/20" />
+              <hr :class="userType === 'Tutor' ? 'my-4 border-gray-200' : 'my-4 border-white/20'" />
               <div class="flex items-center gap-x-4 px-2.5 py-3">
-                <div class="rounded-full w-10 h-10 bg-white/10 overflow-hidden">
+                <div :class="[
+                  'rounded-full w-10 h-10 overflow-hidden',
+                  userType === 'Tutor' ? 'bg-blue-50' : 'bg-white/10'
+                ]">
                   <img
                     :src="userProfileImage || defaultProfileImage"
                     alt="profile image"
@@ -105,15 +113,26 @@
                   />
                 </div>
                 <div class="flex flex-col">
-                  <span class="text-sm font-medium text-white">{{ userData?.first_name }} {{ userData?.last_name }}</span>
-                  <span class="text-xs text-white/70">{{ userEmail }}</span>
+                  <span :class="[
+                    'text-sm font-medium',
+                    userType === 'Tutor' ? 'text-blue-600' : 'text-white'
+                  ]">{{ userData?.first_name }} {{ userData?.last_name }}</span>
+                  <span :class="[
+                    'text-xs',
+                    userType === 'Tutor' ? 'text-blue-400' : 'text-white/70'
+                  ]">{{ userEmail }}</span>
                 </div>
               </div>
               <button
                 @click="logout"
-                class="w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-white rounded-md hover:bg-white/10 transition-colors duration-200"
+                :class="[
+                  'w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm rounded-md transition-colors duration-200',
+                  userType === 'Tutor'
+                    ? 'text-blue-600 hover:bg-blue-50'
+                    : 'text-white hover:bg-white/10'
+                ]"
               >
-                <LogoutIcon />
+                <LogoutIcon :class="userType === 'Tutor' ? 'fill-blue-600' : 'fill-white'" />
                 Logout
               </button>
             </div>
