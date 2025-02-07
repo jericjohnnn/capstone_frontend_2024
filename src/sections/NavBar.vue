@@ -19,7 +19,6 @@
         <div v-if="!hideNavElements" class="hidden sm:flex sm:items-center">
           <a class="px-3 py-2 text-white hover:text-gray-200 cursor-pointer" @click="$emit('scrollTo', 'about')">Features</a>
           <a class="px-3 py-2 text-white hover:text-gray-200 cursor-pointer" @click="$emit('scrollTo', 'team')">Our Team</a>
-          <a class="px-3 py-2 text-white hover:text-gray-200 cursor-pointer" @click="$emit('scrollTo', 'contact')">Contact</a>
         </div>
 
         <!-- Right side buttons -->
