@@ -70,7 +70,7 @@
               v-model="form.address"
               placeholder="Address"
               required
-              class="w-full h-10 sm:h-11 px-3 sm:px-4 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all duration-200 text-sm sm:text-base w-full"
+              class="w-full h-10 sm:h-11 px-3 sm:px-4 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all duration-200 text-sm sm:text-base"
             />
             <input
               type="date"
@@ -93,7 +93,7 @@
               v-model="form.contactNo"
               placeholder="Contact Number"
               required
-              class="w-full h-10 sm:h-11 px-3 sm:px-4 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all duration-200 text-sm sm:text-base w-full"
+              class="w-full h-10 sm:h-11 px-3 sm:px-4 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all duration-200 text-sm sm:text-base"
             />
           </div>
 
