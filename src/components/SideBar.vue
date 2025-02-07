@@ -49,12 +49,12 @@
         <div class="px-8 pt-4">
           <a
             @click="router.push('/')"
-            class="flex-none cursor-pointer flex py-5"
+            class="flex justify-center cursor-pointer"
           >
             <img
-              src="@/assets/logo.svg"
+              src="/tudlo_logo.webp"
               alt="Logo"
-              class="h-7"
+              class="h-36 "
             />
           </a>
         </div>

@@ -1,12 +1,12 @@
 <template>
   <!-- Features -->
-  <div id="features-section" class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto bg-white">
+  <div id="features-section" class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
   <!-- Title -->
   <div class="max-w-2xl mx-auto text-center mb-10 lg:mb-14">
-      <h2 class="text-2xl  text-blue-600 font-bold md:text-4xl md:leading-tight">
+      <h2 class="text-2xl  text-white font-bold md:text-4xl md:leading-tight">
         App Features
       </h2>
-      <p class="mt-1 text-gray-700">What we offer</p>
+      <p class="mt-1 text-blue-200">What we offer</p>
     </div>
 
     <div class="aspect-w-16 aspect-h-7">
@@ -20,10 +20,10 @@
     <!-- Grid -->
     <div class="mt-5 lg:mt-16 grid lg:grid-cols-3 gap-8 lg:gap-12">
       <div class="lg:col-span-1">
-        <h2 class="font-bold text-2xl md:text-3xl text-gray-800">
+        <h2 class="font-bold text-2xl md:text-3xl text-white">
           Empowering Learning Through Peer Connection
         </h2>
-        <p class="mt-2 md:mt-4 text-gray-500">
+        <p class="mt-2 md:mt-4 text-blue-200">
           TUDLO connects students with qualified peer tutors, creating an
           engaging learning environment where knowledge is shared and academic
           goals are achieved together.
@@ -42,10 +42,10 @@
               <line x1="16" x2="16" y1="16" y2="16" />
             </svg>
             <div class="grow">
-              <h3 class="text-lg font-semibold text-gray-800">
+              <h3 class="text-lg font-semibold text-white">
                 Flexible Learning Options
               </h3>
-              <p class="mt-1 text-gray-600">
+              <p class="mt-1 text-blue-200">
                 Choose between online and in-person tutoring sessions to match
                 your learning style and schedule.
               </p>
@@ -59,10 +59,10 @@
               <path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2h0a3.13 3.13 0 0 1 3 3.88Z" />
             </svg>
             <div class="grow">
-              <h3 class="text-lg font-semibold text-gray-800">
+              <h3 class="text-lg font-semibold text-white">
                 Verified Peer Tutors
               </h3>
-              <p class="mt-1 text-gray-600">
+              <p class="mt-1 text-blue-200">
                 Connect with qualified and vetted student tutors who excel in
                 their academic fields.
               </p>
@@ -76,10 +76,10 @@
               <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
             </svg>
             <div class="grow">
-              <h3 class="text-lg font-semibold text-gray-800">
+              <h3 class="text-lg font-semibold text-white">
                 Easy Scheduling
               </h3>
-              <p class="mt-1 text-gray-600">
+              <p class="mt-1 text-blue-200">
                 Book and manage tutoring sessions with our intuitive scheduling
                 system that works around your availability.
               </p>
@@ -95,10 +95,10 @@
               <path d="M16 3.13a4 4 0 0 1 0 7.75" />
             </svg>
             <div class="grow">
-              <h3 class="text-lg font-semibold text-gray-800">
+              <h3 class="text-lg font-semibold text-white">
                 Quality Assurance
               </h3>
-              <p class="mt-1 text-gray-600">
+              <p class="mt-1 text-blue-200">
                 Rate and review your tutoring experience to help maintain high
                 teaching standards across our platform.
               </p>

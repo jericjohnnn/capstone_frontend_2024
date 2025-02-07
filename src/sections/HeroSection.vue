@@ -35,7 +35,7 @@
               ></path>
             </svg>
           </router-link>
-          
+
         </div>
       </div>
       <div class="w-full  shadow-lg mx-auto mt-20 text-center md:w-10/12">

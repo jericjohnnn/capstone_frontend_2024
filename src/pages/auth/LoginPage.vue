@@ -1,29 +1,32 @@
 <template>
   <NavBar />
-  <div
-    class="min-h-[calc(100vh-5rem)] flex justify-center items-center bg-gray-50"
-  >
+  <div class="min-h-[calc(100vh-5rem)] flex justify-center items-center bg-gray-50 px-4 sm:px-6 lg:px-8">
     <NotificationToast
       :show="notification.show"
       :message="notification.message"
       :type="notification.type"
     />
     <div
-      class="flex bg-white min-h-[calc(100vh-5rem)] w-full shadow-md md:rounded-lg flex-col justify-center items-center md:w-5/12 md:min-h-0 md:p-24"
+      class="flex bg-white w-full shadow-md rounded-lg flex-col justify-center items-center
+             p-6 sm:p-8 md:p-12 lg:p-16
+             mx-4 sm:mx-auto
+             min-h-[calc(100vh-5rem)] md:min-h-0
+             sm:w-11/12 md:w-8/12 lg:w-6/12 xl:w-5/12
+             space-y-6"
     >
-      <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-        <h2 class="text-center text-2xl font-bold text-gray-900">
+      <div class="w-full max-w-md">
+        <h2 class="text-center text-2xl sm:text-3xl font-bold text-gray-900">
           Sign in to your account
         </h2>
       </div>
 
-      <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+      <div class="w-full max-w-md">
         <form class="space-y-6" @submit.prevent="handleLogin">
-          <div>
-            <label for="email" class="block text-sm font-medium text-gray-900">
+          <div class="space-y-2">
+            <label for="email" class="block text-sm sm:text-base font-medium text-gray-900">
               Email address
             </label>
-            <div class="mt-2">
+            <div>
               <input
                 id="email"
                 v-model="email"
@@ -31,29 +34,25 @@
                 autocomplete="email"
                 placeholder="Email"
                 required
-                class="block w-full rounded-lg px-3 py-2 text-gray-900 border border-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-blue-600 focus:border-blue-600"
+                class="block w-full rounded-lg px-3 py-2.5 sm:py-3 text-gray-900 border border-gray-300
+                       placeholder:text-gray-400 focus:ring-2 focus:ring-blue-600 focus:border-blue-600
+                       text-sm sm:text-base transition-colors duration-200"
               />
             </div>
           </div>
 
-          <div>
+          <div class="space-y-2">
             <div class="flex items-center justify-between">
-              <label
-                for="password"
-                class="block text-sm font-medium text-gray-900"
-              >
+              <label for="password" class="block text-sm sm:text-base font-medium text-gray-900">
                 Password
               </label>
-              <div class="text-sm">
-                <a
-                  href="#"
-                  class="font-semibold text-blue-600 hover:text-blue-500"
-                >
+              <div>
+                <a href="#" class="text-sm sm:text-base font-semibold text-blue-600 hover:text-blue-500 transition-colors duration-200">
                   Forgot password?
                 </a>
               </div>
             </div>
-            <div class="mt-2">
+            <div>
               <input
                 id="password"
                 v-model="password"
@@ -61,26 +60,32 @@
                 autocomplete="current-password"
                 placeholder="Password"
                 required
-                class="block w-full rounded-lg px-3 py-2 text-gray-900 border border-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-blue-600 focus:border-blue-600"
+                class="block w-full rounded-lg px-3 py-2.5 sm:py-3 text-gray-900 border border-gray-300
+                       placeholder:text-gray-400 focus:ring-2 focus:ring-blue-600 focus:border-blue-600
+                       text-sm sm:text-base transition-colors duration-200"
               />
             </div>
           </div>
 
-          <div class="space-y-4">
+          <div class="space-y-4 pt-2">
             <button
               type="submit"
               :disabled="isLoading"
-              class="flex w-full justify-center rounded-lg bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus:ring-2 focus:ring-offset-2 focus:ring-blue-600"
+              class="flex w-full justify-center rounded-lg bg-blue-600 px-3 py-2.5 sm:py-3
+                     text-sm sm:text-base font-semibold text-white shadow-sm
+                     hover:bg-blue-500 focus:ring-2 focus:ring-offset-2 focus:ring-blue-600
+                     disabled:opacity-70 disabled:cursor-not-allowed
+                     transition-all duration-200"
             >
               <span v-if="isLoading"><LoaderSpinner /></span>
               <span v-else>Sign in</span>
             </button>
 
-            <p class="text-center text-sm text-gray-500">
+            <p class="text-center text-sm sm:text-base text-gray-500">
               Not yet registered?
               <a
                 href="/register"
-                class="font-semibold text-blue-600 hover:text-blue-500"
+                class="font-semibold text-blue-600 hover:text-blue-500 transition-colors duration-200"
               >
                 Sign up
               </a>
@@ -157,50 +162,3 @@ const handleLogin = async () => {
   }
 }
 </script>
-
-<style scoped>
-/* Basic styling */
-.login-container {
-  max-width: 400px;
-  margin: 100px auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
-}
-
-.input-group {
-  margin-bottom: 15px;
-  text-align: left;
-}
-
-label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: 500;
-}
-
-input {
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 5px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-button {
-  width: 100%;
-  padding: 10px;
-
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.error {
-  color: red;
-  margin-top: 10px;
-}
-</style>

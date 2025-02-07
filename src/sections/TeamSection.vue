@@ -1,11 +1,11 @@
 <template>
-  <div id="team-section" class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+  <div id="team-section" class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto bg-white">
     <!-- Title -->
     <div class="max-w-2xl mx-auto text-center mb-10 lg:mb-14">
-      <h2 class="text-2xl text-transparent text-white font-bold md:text-4xl md:leading-tight">
+      <h2 class="text-2xl  text-blue-600 font-bold md:text-4xl md:leading-tight">
         Our team
       </h2>
-      <p class="mt-1 text-slate-200">People behind the app</p>
+      <p class="mt-1 text-gray-600">People behind the app</p>
     </div>
     <!-- End Title -->
 
@@ -33,7 +33,7 @@
         </p>
 
         <!-- Social Brands -->
-        <div class="mt-3 space-x-1">
+        <!-- <div class="mt-3 space-x-1">
           <a
             class="inline-flex justify-center items-center size-8 text-sm font-semibold rounded-lg border border-gray-200 text-gray-500 hover:bg-blue-600 hover:text-white focus:outline-none focus:bg-blue-600 focus:text-white disabled:opacity-50 disabled:pointer-events-none"
             href="#"
@@ -85,7 +85,7 @@
               />
             </svg>
           </a>
-        </div>
+        </div> -->
         <!-- End Social Brands -->
       </div>
       <!-- End Col -->
@@ -112,7 +112,7 @@
         </p>
 
         <!-- Social Brands -->
-        <div class="mt-3 space-x-1">
+        <!-- <div class="mt-3 space-x-1">
           <a
             class="inline-flex justify-center items-center size-8 text-sm font-semibold rounded-lg border border-gray-200 text-gray-500 hover:bg-blue-600 hover:text-white focus:outline-none focus:bg-blue-600 focus:text-white disabled:opacity-50 disabled:pointer-events-none"
             href="#"
@@ -164,7 +164,7 @@
               />
             </svg>
           </a>
-        </div>
+        </div> -->
         <!-- End Social Brands -->
       </div>
       <!-- End Col -->
@@ -191,7 +191,7 @@
         </p>
 
         <!-- Social Brands -->
-        <div class="mt-3 space-x-1">
+        <!-- <div class="mt-3 space-x-1">
           <a
             class="inline-flex justify-center items-center size-8 text-sm font-semibold rounded-lg border border-gray-200 text-gray-500 hover:bg-blue-600 hover:text-white focus:outline-none focus:bg-blue-600 focus:text-white disabled:opacity-50 disabled:pointer-events-none"
             href="#"
@@ -243,7 +243,7 @@
               />
             </svg>
           </a>
-        </div>
+        </div> -->
         <!-- End Social Brands -->
       </div>
       <!-- End Col -->
@@ -270,7 +270,7 @@
         </p>
 
         <!-- Social Brands -->
-        <div class="mt-3 space-x-1">
+        <!-- <div class="mt-3 space-x-1">
           <a
             class="inline-flex justify-center items-center size-8 text-sm font-semibold rounded-lg border border-gray-200 text-gray-500 hover:bg-blue-600 hover:text-white focus:outline-none focus:bg-blue-600 focus:text-white disabled:opacity-50 disabled:pointer-events-none"
             href="#"
@@ -322,7 +322,7 @@
               />
             </svg>
           </a>
-        </div>
+        </div> -->
         <!-- End Social Brands -->
       </div>
       <!-- End Col -->
@@ -349,7 +349,7 @@
         </p>
 
         <!-- Social Brands -->
-        <div class="mt-3 space-x-1">
+        <!-- <div class="mt-3 space-x-1">
           <a
             class="inline-flex justify-center items-center size-8 text-sm font-semibold rounded-lg border border-gray-200 text-gray-500 hover:bg-blue-600 hover:text-white focus:outline-none focus:bg-blue-600 focus:text-white disabled:opacity-50 disabled:pointer-events-none"
             href="#"
@@ -401,14 +401,14 @@
               />
             </svg>
           </a>
-        </div>
+        </div> -->
         <!-- End Social Brands -->
       </div>
       <!-- End Col -->
 
-   
 
-     
+
+
     </div>
     <!-- End Grid -->
   </div>

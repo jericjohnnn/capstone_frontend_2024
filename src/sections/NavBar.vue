@@ -3,21 +3,21 @@
     <header class="w-full bg-blue-600 py-3">
       <nav class="mx-auto px-4 flex items-center justify-between sm:justify-between">
         <!-- Brand -->
-        <a 
-          class="cursor-pointer flex items-center justify-center" 
+        <a
+          class="cursor-pointer flex items-center justify-center  py-2"
           :class="{ 'flex-1': hideNavElements }"
           @click="router.push('/')"
-        > 
-          <img 
-            src="@/assets/logo.svg" 
+        >
+          <img
+            src="/tudlo_logo_horizontal.webp"
             alt="Logo"
-            class="h-5" 
+            class="h-7"
           />
         </a>
 
         <!-- Menu Items for Desktop -->
         <div v-if="!hideNavElements" class="hidden sm:flex sm:items-center">
-          <a class="px-3 py-2 text-white hover:text-gray-200 cursor-pointer" @click="$emit('scrollTo', 'about')">About</a>
+          <a class="px-3 py-2 text-white hover:text-gray-200 cursor-pointer" @click="$emit('scrollTo', 'about')">Features</a>
           <a class="px-3 py-2 text-white hover:text-gray-200 cursor-pointer" @click="$emit('scrollTo', 'team')">Our Team</a>
           <a class="px-3 py-2 text-white hover:text-gray-200 cursor-pointer" @click="$emit('scrollTo', 'contact')">Contact</a>
         </div>
@@ -99,7 +99,7 @@
         class="sm:hidden z-40 absolute w-full bg-white shadow-lg"
       >
         <div class="flex flex-col p-4">
-          <a class="px-3 py-2 text-gray-800 hover:text-gray-600 cursor-pointer" @click="$emit('scrollTo', 'about')">About</a>
+          <a class="px-3 py-2 text-gray-800 hover:text-gray-600 cursor-pointer" @click="$emit('scrollTo', 'about')">Features</a>
           <a class="px-3 py-2 text-gray-800 hover:text-gray-600 cursor-pointer" @click="$emit('scrollTo', 'team')">Our Team</a>
           <a class="px-3 py-2 text-gray-800 hover:text-gray-600 cursor-pointer" @click="$emit('scrollTo', 'contact')">Contact</a>
           <div class="border-t border-gray-200 my-2"></div>

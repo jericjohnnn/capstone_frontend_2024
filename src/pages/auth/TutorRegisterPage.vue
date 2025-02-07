@@ -8,16 +8,16 @@
       :message="notification.message"
       :type="notification.type"
     />
-    <div class="max-w-2xl mx-auto bg-white rounded-2xl shadow-lg">
-      <div class="p-8">
+    <div class="max-w-2xl w-full mx-4 bg-white rounded-2xl shadow-lg">
+      <div class="p-4 sm:p-8">
         <!-- Header -->
-        <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">
+        <h2 class="text-xl sm:text-2xl font-bold text-gray-800 mb-4 sm:mb-6 text-center">
           Sign up as <span class="text-blue-600">TUTOR</span>
         </h2>
 
         <!-- Stepper -->
-        <div class="mb-8">
-          <ul class="flex justify-center items-center">
+        <div class="mb-6 sm:mb-8 overflow-x-auto">
+          <ul class="flex justify-center items-center min-w-max mx-auto">
             <li
               v-for="step in steps"
               :key="step.id"
@@ -30,12 +30,12 @@
                       currentStep >= step.id,
                     'bg-gray-100 text-gray-600': currentStep < step.id,
                   }"
-                  class="h-8 w-8 flex justify-center items-center rounded-full font-semibold text-sm transition-all duration-200"
+                  class="h-6 w-6 sm:h-8 sm:w-8 flex justify-center items-center rounded-full font-semibold text-xs sm:text-sm transition-all duration-200"
                 >
                   {{ step.id }}
                 </span>
                 <div
-                  class="mx-4 h-0.5 w-20 bg-gray-200 group-last:hidden"
+                  class="mx-2 sm:mx-4 h-0.5 w-12 sm:w-20 bg-gray-200 group-last:hidden"
                 ></div>
               </div>
             </li>
@@ -43,26 +43,26 @@
         </div>
 
         <!-- Form -->
-        <form @submit.prevent="handleSubmit" class="max-w-md mx-auto">
+        <form @submit.prevent="handleSubmit" class="w-full max-w-md mx-auto">
           <!-- Step 1: Personal Information -->
-          <div v-if="currentStep === 1" class="space-y-4">
-            <h3 class="text-lg font-semibold text-gray-700 mb-4">
+          <div v-if="currentStep === 1" class="space-y-3 sm:space-y-4">
+            <h3 class="text-base sm:text-lg font-semibold text-gray-700 mb-3 sm:mb-4">
               Personal Information
             </h3>
-            <div class="grid grid-cols-2 gap-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               <input
                 type="text"
                 v-model="form.firstName"
                 placeholder="First name"
                 required
-                class="col-span-1 h-11 px-4 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all duration-200"
+                class="col-span-1 h-10 sm:h-11 px-3 sm:px-4 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all duration-200 text-sm sm:text-base w-full"
               />
               <input
                 type="text"
                 v-model="form.lastName"
                 placeholder="Last name"
                 required
-                class="col-span-1 h-11 px-4 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all duration-200"
+                class="col-span-1 h-10 sm:h-11 px-3 sm:px-4 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all duration-200 text-sm sm:text-base w-full"
               />
             </div>
             <input
@@ -70,30 +70,30 @@
               v-model="form.address"
               placeholder="Address"
               required
-              class="w-full h-11 px-4 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all duration-200"
+              class="w-full h-10 sm:h-11 px-3 sm:px-4 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all duration-200 text-sm sm:text-base w-full"
             />
             <input
               type="date"
               v-model="form.birthdate"
               required
-              class="w-full h-11 px-4 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all duration-200 text-gray-600"
+              class="w-full h-10 sm:h-11 px-3 sm:px-4 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all duration-200 text-sm sm:text-base text-gray-600"
             />
             <select
               v-model="form.gender"
               required
-              class="w-full h-11 px-4 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all duration-200 bg-white text-gray-700"
+              class="w-full h-10 sm:h-11 px-3 sm:px-4 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all duration-200 bg-white text-sm sm:text-base text-gray-700"
             >
               <option value="" disabled>Select Gender</option>
-              <option value="male">Male</option>
-              <option value="female">Female</option>
-              <option value="other">Other</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
             </select>
             <input
               type="text"
               v-model="form.contactNo"
               placeholder="Contact Number"
               required
-              class="w-full h-11 px-4 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all duration-200"
+              class="w-full h-10 sm:h-11 px-3 sm:px-4 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all duration-200 text-sm sm:text-base w-full"
             />
           </div>
 
@@ -180,7 +180,7 @@
           <!-- Step 3: Upload Credentials -->
           <div v-if="currentStep === 3" class="space-y-4">
             <h3 class="text-lg font-semibold text-gray-700 mb-4">
-              Account Credentials
+              Proof of qualification
             </h3>
 
             <!-- Image Previews -->
@@ -209,7 +209,7 @@
               @click="openFileSelector"
               class="w-full py-2 px-4 text-sm text-blue-600 border border-blue-600 rounded-lg hover:bg-blue-50 transition-colors"
             >
-              + Add Credentials
+              + Add Qualifications
             </button>
             <input
               type="file"
@@ -266,12 +266,12 @@
           </div>
 
           <!-- Navigation Buttons -->
-          <div class="flex justify-end space-x-3 mt-8">
+          <div class="flex flex-col sm:flex-row justify-end space-y-2 sm:space-y-0 sm:space-x-3 mt-6 sm:mt-8">
             <button
               type="button"
               v-if="currentStep > 1"
               @click="prevStep"
-              class="px-6 py-2.5 text-sm font-medium text-blue-600 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors duration-200"
+              class="w-full sm:w-auto px-4 sm:px-6 py-2 sm:py-2.5 text-sm font-medium text-blue-600 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors duration-200"
             >
               Back
             </button>
@@ -279,7 +279,7 @@
               type="button"
               v-if="currentStep < 4"
               @click="nextStep"
-              class="px-6 py-2.5 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors duration-200"
+              class="w-full sm:w-auto px-4 sm:px-6 py-2 sm:py-2.5 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors duration-200"
             >
               Next
             </button>
@@ -287,7 +287,7 @@
               v-if="currentStep === 4"
               type="submit"
               :disabled="!form.agreeToTerms || isLoading"
-              class="px-6 py-2.5 text-sm font-medium rounded-lg transition-colors duration-200 flex items-center justify-center"
+              class="w-full sm:w-auto px-4 sm:px-6 py-2 sm:py-2.5 text-sm font-medium rounded-lg transition-colors duration-200 flex items-center justify-center"
               :class="
                 form.agreeToTerms
                   ? 'text-white bg-blue-600 hover:bg-blue-700'
@@ -421,6 +421,14 @@ const validateCurrentStep = () => {
     ) {
       showNotification(
         'Please fill in all education information fields and select at least one subject',
+        'error',
+      )
+      return false
+    }
+  } else if (currentStep.value === 3) {
+    if (selectedImages.value.length === 0) {
+      showNotification(
+        'Please upload at least one of your documents or credentials',
         'error',
       )
       return false
