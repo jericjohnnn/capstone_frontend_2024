@@ -59,7 +59,7 @@
       </div>
     </SideBar>
 
-    <HelpButton />
+    <!-- <HelpButton /> -->
   </main>
 </template>
 
@@ -72,7 +72,7 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import SideBar from '@/components/SideBar.vue';
-import HelpButton from '@/components/HelpButton.vue';
+// import HelpButton from '@/components/HelpButton.vue';
 import axiosInstance from '@/axiosInstance';
 
 // Store notifications in a ref

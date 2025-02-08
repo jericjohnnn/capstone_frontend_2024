@@ -78,7 +78,7 @@
     </SideBar>
     <FooterSection class="tablet:hidden" />
 
-    <HelpButton />
+    <!-- <HelpButton /> -->
   </main>
 </template>
 
@@ -95,7 +95,7 @@ import TutorProfileSubjects from '@/components/tutor/TutorProfile/TutorProfileSu
 import TutorProfileHeader from '@/components/tutor/TutorProfile/TutorProfileHeader.vue'
 import RatingsCarousel from '@/components/RatingsCarousel.vue'
 import SideBar from '@/components/SideBar.vue'
-import HelpButton from '@/components/HelpButton.vue'
+// import HelpButton from '@/components/HelpButton.vue'
 import StarRating from '@/components/StarRating.vue'
 import { computed, onMounted } from 'vue'
 import axiosInstance from '@/axiosInstance'

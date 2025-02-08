@@ -14,7 +14,7 @@
       </main>
     </SideBar>
 
-    <HelpButton />
+    <!-- <HelpButton /> -->
   </main>
 </template>
 
@@ -22,5 +22,5 @@
 import BreadCrumb from '@/components/BreadCrumb.vue'
 import SchedulesCalendar from '@/components/shared/calendar/SchedulesCalendar.vue'
 import SideBar from '@/components/SideBar.vue'
-import HelpButton from '@/components/HelpButton.vue'
+// import HelpButton from '@/components/HelpButton.vue'
 </script>

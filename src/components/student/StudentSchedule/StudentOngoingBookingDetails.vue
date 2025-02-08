@@ -243,7 +243,7 @@
       </main>
     </SideBar>
     <FooterSection class="tablet:hidden" />
-    <HelpButton />
+    <!-- <HelpButton /> -->
   </main>
 </template>
 
@@ -253,7 +253,7 @@ import BreadCrumb from '@/components/BreadCrumb.vue'
 import { ref, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import SideBar from '@/components/SideBar.vue'
-import HelpButton from '@/components/HelpButton.vue'
+// import HelpButton from '@/components/HelpButton.vue'
 import axiosInstance from '@/axiosInstance'
 import {
   formatDate,

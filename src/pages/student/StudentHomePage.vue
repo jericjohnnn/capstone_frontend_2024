@@ -13,7 +13,7 @@
         </div>
 
         <!-- Search Section -->
-        <div class="w-full pb-4 tablet:pb-10 tablet:row-span-1">
+        <div class="h-fit w-full pb-4 tablet:pb-10 tablet:row-span-1">
           <TutorSearch
             :selectedSubject="selectedSubjectBadge"
             @update:search-results="updateSearchResults"
@@ -88,7 +88,7 @@
     </SideBar>
 
     <FooterSection class="tablet:hidden" />
-    <HelpButton></HelpButton>
+    <!-- <HelpButton></HelpButton> -->
   </main>
 </template>
 
@@ -103,7 +103,7 @@ import AllSubjects from '@/components/AllSubjects.vue'
 import TutorDetailsCard from '@/components/TutorDetailsCard.vue'
 import TutorCard from '@/components/TutorCard.vue'
 import PaginationLinks from '@/components/PaginationLinks.vue'
-import HelpButton from '@/components/HelpButton.vue'
+// import HelpButton from '@/components/HelpButton.vue'
 import axiosInstance from '@/axiosInstance'
 import LoaderSpinner from '@/components/Reusables/LoaderSpinner.vue'
 
