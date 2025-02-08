@@ -77,8 +77,7 @@
                      disabled:opacity-70 disabled:cursor-not-allowed
                      transition-all duration-200"
             >
-              <span v-if="isLoading"><LoaderSpinner /></span>
-              <span v-else>Sign in</span>
+              <span>Sign in</span>
             </button>
 
             <p class="text-center text-sm sm:text-base text-gray-500">
@@ -106,7 +105,6 @@ import { useRouter } from 'vue-router'
 import axiosInstance from '@/axiosInstance'
 import NotificationToast from '@/components/Reusables/NotificationToast.vue'
 import { useNotification } from '@/composables/useNotification'
-import LoaderSpinner from '@/components/Reusables/LoaderSpinner.vue'
 
 // State for form inputs and notification
 const email = ref('')

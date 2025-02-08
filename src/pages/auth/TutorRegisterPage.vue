@@ -177,7 +177,7 @@
             </div>
           </div>
 
-          <!-- Step 3: Upload Credentials -->
+          <!-- Step 3: Upload Proof of qualifications -->
           <div v-if="currentStep === 3" class="space-y-4">
             <h3 class="text-lg font-semibold text-gray-700 mb-4">
               Proof of qualification

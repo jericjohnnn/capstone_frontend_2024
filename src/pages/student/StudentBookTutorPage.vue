@@ -93,6 +93,7 @@
                 </router-link>
                 <button
                   type="submit"
+                  :disabled="isLoading"
                   class="w-full px-4 py-3 text-white bg-blue-600 rounded-md hover:bg-blue-700"
                 >
                   BOOK

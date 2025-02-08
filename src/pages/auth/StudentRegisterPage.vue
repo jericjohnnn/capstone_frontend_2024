@@ -194,10 +194,7 @@
                   : 'text-gray-400 bg-gray-100 cursor-not-allowed'
               "
             >
-              <span v-if="isLoading" >
-                <LoaderSpinner />
-              </span>
-              <span v-else>Sign up</span>
+              <span>Sign up</span>
             </button>
           </div>
         </form>
@@ -215,7 +212,6 @@ import router from '@/router'
 import { reactive, ref } from 'vue'
 import NotificationToast from '@/components/Reusables/NotificationToast.vue'
 import { useNotification } from '@/composables/useNotification'
-import LoaderSpinner from '@/components/Reusables/LoaderSpinner.vue'
 
 const { notification, showNotification } = useNotification()
 
@@ -309,7 +305,7 @@ const handleSubmit = async () => {
 
   try {
     const response = await axiosInstance.post('api/register', payload)
-    const { message, user_email, user_full_name, user_type, user_data, token } =
+    const { user_email, user_full_name, user_type, user_data, token } =
       response.data
 
     showNotification('Registration successful!', 'success')

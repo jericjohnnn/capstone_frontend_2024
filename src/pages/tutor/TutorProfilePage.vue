@@ -56,7 +56,7 @@
             </div>
 
             <div class="p-4 bg-white rounded-lg shadow-md">
-              <h3 class="font-semibold">Credentials</h3>
+              <h3 class="font-semibold">Proof of qualification</h3>
               <TutorProfileCredentials></TutorProfileCredentials>
             </div>
 
