@@ -89,17 +89,31 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import axiosInstance from '@/axiosInstance';
+
+const props = defineProps({
+  selectedSubject: {
+    type: String,
+    default: null
+  }
+})
+
+watch(() => props.selectedSubject, (newVal) => {
+  if (newVal) {
+    subject.value = newVal
+    handleSearchAction()
+  }
+})
 
 const tutor = ref('');
 const subject = ref('');
 
-const emit = defineEmits(['update:search-results'])
+const emit = defineEmits(['update:search-results', 'reset-search-results']);
 
 const handleSearchAction = async () => {
   if (tutor.value === '' && subject.value === '') {
-    console.log('jamal');
+    emit('reset-search-results')
     return;
   }
 

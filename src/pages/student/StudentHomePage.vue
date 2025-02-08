@@ -15,16 +15,17 @@
         <!-- Search Section -->
         <div class="w-full pb-4 tablet:pb-10 tablet:row-span-1">
           <TutorSearch
+            :selectedSubject="selectedSubjectBadge"
             @update:search-results="updateSearchResults"
+            @reset-search-results="fetchTutors"
           ></TutorSearch>
           <div>
-            <AllSubjects></AllSubjects>
+            <AllSubjects @emitted:subject="updateSubjectSearchbar"></AllSubjects>
           </div>
         </div>
 
         <!-- Main Content Area -->
         <div class="grid grid-cols-1 tablet:grid-cols-9 gap-4 tablet:row-span-1">
-          <!-- tablet:max-h-[calc(100vh-14rem)] -->
           <!-- Left Column - Split into two rows -->
           <div class="grid grid-rows-[1fr,auto] gap-4 tablet:col-span-4">
             <!-- Tutor Cards Section -->
@@ -34,6 +35,9 @@
                 class="flex justify-center items-center h-full"
               >
                 <LoaderSpinner />
+              </div>
+              <div v-else-if="tutors.length === 0" class="flex justify-center items-center h-full">
+                <p class="text-gray-500 text-lg">No tutors found</p>
               </div>
               <div v-else class="space-y-4">
                 <TutorCard
@@ -121,6 +125,11 @@ const updateSearchResults = searchedTutors => {
   currentPage.value = searchedTutors.current_page
   lastPage.value = searchedTutors.last_page
   paginationLinks.value = searchedTutors.links
+}
+
+const selectedSubjectBadge = ref('')
+const updateSubjectSearchbar = subject => {
+  selectedSubjectBadge.value = subject
 }
 
 const fetchTutors = async (page = 1) => {
