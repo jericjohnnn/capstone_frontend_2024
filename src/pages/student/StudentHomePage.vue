@@ -3,17 +3,17 @@
     <SideBar>
       <!-- Container with gap between grid items -->
       <div
-        class="grid grid-cols-1 gap-4 min-h-screen py-5 md:grid-rows-[auto,auto,1fr] md:grid-flow-col"
+        class="grid grid-cols-1 gap-4 min-h-screen py-5 tablet:grid-rows-[auto,auto,1fr] tablet:grid-flow-col"
       >
         <!-- Breadcrumb Section -->
-        <div class="w-full hidden md:block md:row-span-1">
+        <div class="w-full hidden tablet:block tablet:row-span-1">
           <BreadCrumb
             :breadcrumbs="[{ label: 'Home', route: '/student/home' }]"
           />
         </div>
 
         <!-- Search Section -->
-        <div class="w-full pb-4 md:pb-10 md:row-span-1">
+        <div class="w-full pb-4 tablet:pb-10 tablet:row-span-1">
           <TutorSearch
             @update:search-results="updateSearchResults"
           ></TutorSearch>
@@ -23,10 +23,10 @@
         </div>
 
         <!-- Main Content Area -->
-        <div class="grid grid-cols-1 md:grid-cols-9 gap-4 md:row-span-1">
-          <!-- md:max-h-[calc(100vh-14rem)] -->
+        <div class="grid grid-cols-1 tablet:grid-cols-9 gap-4 tablet:row-span-1">
+          <!-- tablet:max-h-[calc(100vh-14rem)] -->
           <!-- Left Column - Split into two rows -->
-          <div class="grid grid-rows-[1fr,auto] gap-4 md:col-span-4">
+          <div class="grid grid-rows-[1fr,auto] gap-4 tablet:col-span-4">
             <!-- Tutor Cards Section -->
             <div class="w-full min-h-96">
               <div
@@ -43,7 +43,7 @@
                   :loading="tutorsLoading"
                   @triggerSelectTutor="selectTutor(tutor.id)"
                   @triggerSelectTutorMobile="selectTutorMobile(tutor.id)"
-                  class="md:w-11/12"
+                  class="tablet:w-11/12"
                 />
               </div>
             </div>
@@ -54,15 +54,14 @@
                 :links="paginationLinks"
                 :current-page="currentPage"
                 :last-page="lastPage"
-                class="md:w-11/12"
+                class="tablet:w-11/12"
               />
             </div>
           </div>
 
-          <!-- max-h-[calc(100vh-5rem)] adjust for xl -->
           <!-- Tutor Details Section -->
           <div
-            class="w-full hidden md:block md:col-span-5 max-h-[calc(100vh-14rem)] xl:max-h-[calc(100vh-14rem)]"
+            class="w-full hidden tablet:block tablet:col-span-5 max-h-[calc(100vh-14rem)] xl:max-h-[calc(100vh-14rem)]"
           >
             <div
               v-if="tutorDetailsLoading"
@@ -84,7 +83,7 @@
       </div>
     </SideBar>
 
-    <FooterSection class="md:hidden" />
+    <FooterSection class="tablet:hidden" />
     <HelpButton></HelpButton>
   </main>
 </template>
@@ -92,7 +91,7 @@
 <script setup>
 import FooterSection from '@/sections/FooterSection.vue'
 import BreadCrumb from '@/components/BreadCrumb.vue'
-import { ref, onMounted, watch, onUnmounted } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import SideBar from '@/components/SideBar.vue'
 import TutorSearch from '@/components/TutorSearch.vue'
@@ -115,10 +114,7 @@ const currentPage = ref(1)
 const lastPage = ref(1)
 const paginationLinks = ref([])
 // Mobile View
-const isMobileView = ref(window.innerWidth < 640)
-const resizeHandler = () => {
-  isMobileView.value = window.innerWidth < 640
-}
+const isMobileView = ref(window.innerWidth < 900)
 
 const updateSearchResults = searchedTutors => {
   tutors.value = searchedTutors.data
@@ -130,8 +126,12 @@ const updateSearchResults = searchedTutors => {
 const fetchTutors = async (page = 1) => {
   try {
     tutorsLoading.value = true
-    const endpoint = isMobileView.value ? `/api/tutors-mobile` : `/api/tutors`
-    const response = await axiosInstance.get(`${endpoint}?page=${page}`)
+    const response = await axiosInstance.get('/api/tutors', {
+      params: {
+        page,
+        number_of_tutors: isMobileView.value ? 20 : 5,
+      },
+    })
     const { data, current_page, last_page, links } =
       response.data.tutor_previews
 
@@ -162,7 +162,7 @@ const selectTutor = tutorId => {
   router.push({
     path: '/student/home',
     query: {
-      ...route.query, // Preserve existing query parameters
+      ...route.query,
       tutor_id: tutorId,
     },
   })
@@ -195,28 +195,30 @@ watch(
 
 watch(isMobileView, (newIsMobile, oldIsMobile) => {
   if (newIsMobile !== oldIsMobile) {
-    // Re-fetch tutors with current page when view changes
-    const currentPageNumber = parseInt(route.query.page) || 1
-    fetchTutors(currentPageNumber)
+    fetchTutors()
+    router.push({
+      query: {
+        page: 1,
+      },
+    });
   }
 })
 
 onMounted(() => {
-  // Add resize event listener
-  window.addEventListener('resize', resizeHandler)
-
-  // Initial fetch of tutors
+  // window.addEventListener('resize', resizeHandler)
   const initialPage = parseInt(route.query.page) || 1
   fetchTutors(initialPage)
-
   // Only fetch initial tutor details if tutor_id exists in URL
   const initialTutorId = route.query.tutor_id
   if (initialTutorId) {
     fetchTutorDetails(initialTutorId)
   }
-})
-
-onUnmounted(() => {
-  window.removeEventListener('resize', resizeHandler)
+  if (isMobileView.value) {
+    router.push({
+      query: {
+        page: 1,
+      },
+    });
+  }
 })
 </script>
