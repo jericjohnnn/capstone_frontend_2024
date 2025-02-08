@@ -95,7 +95,7 @@
 <script setup>
 import FooterSection from '@/sections/FooterSection.vue'
 import BreadCrumb from '@/components/BreadCrumb.vue'
-import { ref, onMounted, watch } from 'vue'
+import { ref, onMounted, watch, onUnmounted } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import SideBar from '@/components/SideBar.vue'
 import TutorSearch from '@/components/TutorSearch.vue'
@@ -119,6 +119,7 @@ const lastPage = ref(1)
 const paginationLinks = ref([])
 // Mobile View
 const isMobileView = ref(window.innerWidth < 900)
+const isScreenBig = ref(window.innerHeight >= 1080);
 
 const updateSearchResults = searchedTutors => {
   tutors.value = searchedTutors.data
@@ -133,12 +134,16 @@ const updateSubjectSearchbar = subject => {
 }
 
 const fetchTutors = async (page = 1) => {
+  const numberToFetchForDesktops = ref(5)
+  if(isScreenBig.value) {
+    numberToFetchForDesktops.value = 8
+  }
   try {
     tutorsLoading.value = true
     const response = await axiosInstance.get('/api/tutors', {
       params: {
         page,
-        number_of_tutors: isMobileView.value ? 20 : 5,
+        number_of_tutors: isMobileView.value ? 20 : numberToFetchForDesktops.value,
       },
     })
     const { data, current_page, last_page, links } =
@@ -202,8 +207,8 @@ watch(
   },
 )
 
-watch(isMobileView, (newIsMobile, oldIsMobile) => {
-  if (newIsMobile !== oldIsMobile) {
+watch([isMobileView, isScreenBig], ([newIsMobile, newIsScreenBig], [oldIsMobile, oldIsScreenBig]) => {
+  if (newIsMobile !== oldIsMobile || newIsScreenBig !== oldIsScreenBig) {
     fetchTutors()
     router.push({
       query: {
@@ -213,8 +218,11 @@ watch(isMobileView, (newIsMobile, oldIsMobile) => {
   }
 })
 
+const resizeHandler = () => {
+  isMobileView.value = window.innerWidth < 900
+}
 onMounted(() => {
-  // window.addEventListener('resize', resizeHandler)
+  window.addEventListener('resize', resizeHandler)
   const initialPage = parseInt(route.query.page) || 1
   fetchTutors(initialPage)
   // Only fetch initial tutor details if tutor_id exists in URL
@@ -229,5 +237,8 @@ onMounted(() => {
       },
     });
   }
+})
+onUnmounted(() => {
+  window.removeEventListener('resize', resizeHandler)
 })
 </script>
