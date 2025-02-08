@@ -1,7 +1,7 @@
 <template>
   <div class="mb-2.5">
     <div
-      class="bg-blue-50 border border-white shadow-sm rounded-xl hover:shadow-tablet focus:outline-none focus:shadow-tablet transition"
+      class="bg-blue-50 border border-white shadow-sm rounded-xl hover:shadow-md focus:outline-none focus:shadow-md transition"
     >
       <!-- Tutor Info Section -->
       <div class="p-3 flex items-center justify-between">

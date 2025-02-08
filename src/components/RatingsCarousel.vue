@@ -17,7 +17,7 @@
             'opacity-50': index !== currentIndex,
           }"
         >
-          <div class="bg-white p-6 rounded-lg shadow-tablet hover:shadow-lg border border-gray-200 transition-shadow">
+          <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg border border-gray-200 transition-shadow">
             <!-- Card Content -->
             <div class="flex">
               <div class="flex flex-col w-full bg-white rounded-xl">
