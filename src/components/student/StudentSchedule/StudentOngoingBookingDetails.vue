@@ -66,7 +66,7 @@
                   </p>
                   <button
                     @click="openReportModal"
-                    class="border-2 border-blue-600 text-blue-600 rounded-tablet px-2 py-1 text-sm"
+                    class="border-2 border-blue-600 text-blue-600 rounded-md px-2 py-1 text-sm"
                   >
                     Report
                   </button>
@@ -167,7 +167,7 @@
                 <button
                   :disabled="isExpired"
                   @click="updateBookingStatus('Completed')"
-                  class="bg-blue-400 w-full p-2 rounded-tablet text-white hover:bg-blue-500 transition-colors"
+                  class="bg-blue-400 w-full p-2 rounded-md text-white hover:bg-blue-500 transition-colors"
                 >
                   Mark as Complete
                 </button>

@@ -68,7 +68,7 @@
                 <li v-for="(item, index) in tutorNavItems" :key="index">
                   <router-link
                     :to="{ name: item.route }"
-                    class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm rounded-tablet transition-colors duration-200"
+                    class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm rounded-md transition-colors duration-200"
                     :class="[
                       $route.name === item.route
                         ? 'bg-blue-600 text-white'
@@ -88,7 +88,7 @@
                 <li v-for="(item, index) in studentNavItems" :key="index">
                   <router-link
                     :to="{ name: item.route }"
-                    class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-white rounded-tablet hover:bg-white/10 focus:outline-none focus:bg-white/10 transition-colors duration-200"
+                    class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-white rounded-md hover:bg-white/10 focus:outline-none focus:bg-white/10 transition-colors duration-200"
                     :class="{ 'bg-white/10': $route.name === item.route }"
                   >
                     <component :is="item.icon" />
@@ -126,7 +126,7 @@
               <button
                 @click="logout"
                 :class="[
-                  'w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm rounded-tablet transition-colors duration-200',
+                  'w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm rounded-md transition-colors duration-200',
                   userType === 'Tutor'
                     ? 'text-blue-600 hover:bg-blue-50'
                     : 'text-white hover:bg-white/10'

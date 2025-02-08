@@ -40,14 +40,14 @@
           <button
             @click="triggerSelectTutor"
             type="button"
-            class="hidden tablet:block py-1.5 px-4 text-xs font-medium rounded-tablet border border-blue-600 text-blue-600 hover:bg-blue-50 transition-colors duration-200"
+            class="hidden tablet:block py-1.5 px-4 text-xs font-medium rounded-md border border-blue-600 text-blue-600 hover:bg-blue-50 transition-colors duration-200"
           >
             View Profile
           </button>
           <button
             @click="triggerSelectTutorMobile"
             type="button"
-            class="block tablet:hidden py-1.5 px-3 text-xs font-medium rounded-tablet border border-blue-600 text-blue-600 hover:bg-blue-50 transition-colors duration-200"
+            class="block tablet:hidden py-1.5 px-3 text-xs font-medium rounded-md border border-blue-600 text-blue-600 hover:bg-blue-50 transition-colors duration-200"
           >
             View Profile
           </button>

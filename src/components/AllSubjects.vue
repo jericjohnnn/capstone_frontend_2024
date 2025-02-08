@@ -7,7 +7,7 @@
     >
     <button
       @click="scrollLeft"
-      class="absolute left-0 z-10 bg-white shadow-sm rounded-tablet p-1 hover:bg-gray-50 transition-colors duration-200"
+      class="absolute left-0 z-10 bg-white shadow-sm rounded-md p-1 hover:bg-gray-50 transition-colors duration-200"
     >
       <svg
         class="w-6 h-6 text-gray-600"
@@ -24,7 +24,7 @@
       <button
         v-for="subject in subjects"
         :key="subject.fullName"
-        class="px-5 py-1 text-sm rounded-tablet text-gray-500 bg-white border shadow-sm hover:bg-gray-50 whitespace-nowrap transition-colors duration-200"
+        class="px-5 py-1 text-sm rounded-md text-gray-500 bg-white border shadow-sm hover:bg-gray-50 whitespace-nowrap transition-colors duration-200"
         @click="selectSubject(subject.fullName)"
       >
         {{ subject.abbreviation }}
@@ -33,7 +33,7 @@
     <!-- Right Arrow -->
     <button
       @click="scrollRight"
-      class=" absolute right-0 z-10 bg-white shadow-sm rounded-tablet p-1 hover:bg-gray-50 transition-colors duration-200"
+      class=" absolute right-0 z-10 bg-white shadow-sm rounded-md p-1 hover:bg-gray-50 transition-colors duration-200"
     >
       <svg
         class="w-6 h-6 text-gray-600"

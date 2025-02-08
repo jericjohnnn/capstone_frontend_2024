@@ -58,7 +58,7 @@
             </h1>
             <button
               @click="selectTutor(book.tutor_id)"
-              class="hidden tablet:block w-3/6 py-1.5 px-3 text-xs font-medium rounded-tablet border border-blue-600 text-blue-600 hover:bg-blue-50 transition-colors duration-200"
+              class="hidden tablet:block w-3/6 py-1.5 px-3 text-xs font-medium rounded-md border border-blue-600 text-blue-600 hover:bg-blue-50 transition-colors duration-200"
             >
               View Profile
             </button>
@@ -71,7 +71,7 @@
               </p>
               <button
                 @click="openRateModal(book.tutor_id)"
-                class="block tablet:hidden w-full py-1.5 px-3 text-xs font-medium rounded-tablet border border-blue-600 text-blue-600 hover:bg-blue-50 transition-colors duration-200"
+                class="block tablet:hidden w-full py-1.5 px-3 text-xs font-medium rounded-md border border-blue-600 text-blue-600 hover:bg-blue-50 transition-colors duration-200"
                 :class="book.status !== 'Completed' ? 'hidden' : ''"
               >
                 Rate tutor
@@ -105,7 +105,7 @@
           <div class="w-full h-full tablet:hidden">
             <button
               @click="selectTutorMobile(book.tutor_id)"
-              class="h-full w-full tablet:w-fit py-1.5 px-3 text-xs font-medium rounded-tablet border border-blue-600 text-blue-600 hover:bg-blue-50 transition-colors duration-200"
+              class="h-full w-full tablet:w-fit py-1.5 px-3 text-xs font-medium rounded-md border border-blue-600 text-blue-600 hover:bg-blue-50 transition-colors duration-200"
             >
               View Profile
             </button>
