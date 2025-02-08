@@ -294,8 +294,7 @@
                   : 'text-gray-400 bg-gray-100 cursor-not-allowed'
               "
             >
-              <span v-if="isLoading"><LoaderSpinner /></span>
-              <span v-else>Sign up</span>
+              <span>Sign up</span>
             </button>
           </div>
         </form>
@@ -313,7 +312,6 @@ import axiosInstance from '@/axiosInstance'
 import router from '@/router'
 import NotificationToast from '@/components/Reusables/NotificationToast.vue'
 import { useNotification } from '@/composables/useNotification'
-import LoaderSpinner from '@/components/Reusables/LoaderSpinner.vue'
 
 const { notification, showNotification } = useNotification()
 
