@@ -70,7 +70,7 @@
               v-model="form.address"
               placeholder="Address"
               required
-              class="w-full h-10 sm:h-11 px-3 sm:px-4 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all duration-200 text-sm sm:text-base w-full"
+              class="w-full h-10 sm:h-11 px-3 sm:px-4 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all duration-200 text-sm sm:text-base"
             />
             <input
               type="date"
@@ -93,7 +93,7 @@
               v-model="form.contactNo"
               placeholder="Contact Number"
               required
-              class="w-full h-10 sm:h-11 px-3 sm:px-4 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all duration-200 text-sm sm:text-base w-full"
+              class="w-full h-10 sm:h-11 px-3 sm:px-4 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all duration-200 text-sm sm:text-base"
             />
           </div>
 
@@ -177,7 +177,7 @@
             </div>
           </div>
 
-          <!-- Step 3: Upload Credentials -->
+          <!-- Step 3: Upload Proof of qualifications -->
           <div v-if="currentStep === 3" class="space-y-4">
             <h3 class="text-lg font-semibold text-gray-700 mb-4">
               Proof of qualification
@@ -294,8 +294,7 @@
                   : 'text-gray-400 bg-gray-100 cursor-not-allowed'
               "
             >
-              <span v-if="isLoading"><LoaderSpinner /></span>
-              <span v-else>Sign up</span>
+              <span>Sign up</span>
             </button>
           </div>
         </form>
@@ -313,7 +312,6 @@ import axiosInstance from '@/axiosInstance'
 import router from '@/router'
 import NotificationToast from '@/components/Reusables/NotificationToast.vue'
 import { useNotification } from '@/composables/useNotification'
-import LoaderSpinner from '@/components/Reusables/LoaderSpinner.vue'
 
 const { notification, showNotification } = useNotification()
 

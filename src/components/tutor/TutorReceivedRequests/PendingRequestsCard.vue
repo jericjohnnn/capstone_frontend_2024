@@ -10,8 +10,8 @@
       </div>
     </div>
     <!-- No Requests Message -->
-    <div 
-      v-else-if="pendingRequests.length === 0" 
+    <div
+      v-else-if="pendingRequests.length === 0"
       class="min-h-[calc(100vh-15rem)] flex items-center justify-center"
     >
       <p class="text-gray-600 text-lg">No current pending requests from students</p>
@@ -19,28 +19,28 @@
     <!-- Request Cards -->
     <div v-else v-for="book in pendingRequests" :key="book.id" class="mb-3">
       <div
-        class="grid grid-rows-[auto,1fr,auto] md:grid-cols-3 md:grid-rows-1 p-3 gap-2 rounded-xl bg-blue-200 border-blue-50 border-2"
+        class="grid grid-rows-[auto,1fr,auto] tablet:grid-cols-3 tablet:grid-rows-1 p-3 gap-2 rounded-xl bg-blue-200 border-blue-50 border-2"
       >
         <div class="flex items-center gap-2">
           <div class="shrink-0">
             <img
-              class="shrink-0 size-12 md:size-16 rounded-full"
+              class="shrink-0 size-12 tablet:size-16 rounded-full"
               :src="book.student.profile_image || defaultProfileImage"
               alt="profile image"
             />
           </div>
-          <div class="flex justify-between w-full md:flex-col">
-            <h1 class="text-base md:text-lg font-medium text-gray-800">
+          <div class="flex justify-between w-full tablet:flex-col">
+            <h1 class="text-base tablet:text-lg font-medium text-gray-800">
               {{ book.student.first_name }} {{ book.student.last_name }}
             </h1>
-            <p class="md:hidden block font-semibold">{{ book.status }}</p>
+            <p class="tablet:hidden block font-semibold">{{ book.status }}</p>
           </div>
         </div>
 
-        <hr class="block md:hidden my-2 border-white" />
+        <hr class="block tablet:hidden my-2 border-white" />
 
         <div
-          class="flex justify-between md:flex-col items-center order-first md:order-none md:justify-center"
+          class="flex justify-between tablet:flex-col items-center order-first tablet:order-none tablet:justify-center"
         >
           <p class="">Requested for</p>
           <div
@@ -51,13 +51,13 @@
         </div>
 
         <div
-          class="flex justify-between  md:justify-end gap-3 w-full items-center md:col-span-1"
+          class="flex justify-between  tablet:justify-end gap-3 w-full items-center tablet:col-span-1"
         >
-          <p class="hidden md:block font-semibold">{{ book.status }}</p>
+          <p class="hidden tablet:block font-semibold">{{ book.status }}</p>
           <button
             @click="goToBookDetails(book.id)"
             type="button"
-            class="py-2 px-4 text-sm md:text-xs w-full md:w-3/6   font-normal rounded-lg border border-blue-400 bg-blue-600 text-white hover:bg-blue-700 focus:outline-none"
+            class="py-2 px-4 text-sm tablet:text-xs w-full tablet:w-3/6   font-normal rounded-lg border border-blue-400 bg-blue-600 text-white hover:bg-blue-700 focus:outline-none"
           >
             Review request
           </button>

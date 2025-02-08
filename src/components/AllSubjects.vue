@@ -23,12 +23,11 @@
 
       <button
         v-for="subject in subjects"
-        :key="subject"
+        :key="subject.fullName"
         class="px-5 py-1 text-sm rounded-md text-gray-500 bg-white border shadow-sm hover:bg-gray-50 whitespace-nowrap transition-colors duration-200"
-        :class="{ 'bg-blue-100 border-blue-200': selectedSubject === subject }"
-        @click="selectSubject(subject)"
+        @click="selectSubject(subject.fullName)"
       >
-        {{ subject }}
+        {{ subject.abbreviation }}
       </button>
 
     <!-- Right Arrow -->
@@ -53,27 +52,34 @@
 <script setup>
 import { ref } from 'vue'
 
-// Sample subjects - you can pass these as props instead
 const subjects = [
-  'English',
-  'P.E',
-  'Science',
-  'Math',
-  'History',
-  'Geography',
-  'Physics',
-  'Chemistry',
-  'Biology',
-  'Literature'
+  { fullName: 'English', abbreviation: 'Eng' },
+  { fullName: 'Mathematics', abbreviation: 'Math' },
+  { fullName: 'Science', abbreviation: 'Sci' },
+  { fullName: 'History', abbreviation: 'Hist' },
+  { fullName: 'Literature', abbreviation: 'Litr' },
+  { fullName: 'Biology', abbreviation: 'Bio' },
+  { fullName: 'Chemistry', abbreviation: 'Chem' },
+  { fullName: 'Physics', abbreviation: 'Phys' },
+  { fullName: 'Geography', abbreviation: 'Geo' },
+  { fullName: 'Computer Science', abbreviation: 'CS' },
+  { fullName: 'Art', abbreviation: 'Art' },
+  { fullName: 'Music', abbreviation: 'Music' },
+  { fullName: 'Physical Education', abbreviation: 'PE' },
+  { fullName: 'Economics', abbreviation: 'Econ' },
+  { fullName: 'Philosophy', abbreviation: 'Phil' },
+  { fullName: 'Psychology', abbreviation: 'Psych' }
 ]
 
 const selectedSubject = ref(null)
 const scrollContainer = ref(null)
 
+const emit = defineEmits(['emitted:subject']);
+
 const selectSubject = (subject) => {
   selectedSubject.value = subject
-  // Emit the selected subject if needed
-  // emit('update:modelValue', subject)
+  // console.log(subject);
+  emit('emitted:subject', subject)
 }
 
 const scrollLeft = () => {
@@ -96,7 +102,6 @@ const scrollRight = () => {
 </script>
 
 <style scoped>
-/* Hide scrollbar but keep functionality */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }

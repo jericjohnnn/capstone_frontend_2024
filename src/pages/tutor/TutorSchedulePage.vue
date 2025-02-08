@@ -1,7 +1,7 @@
 <template>
   <main class="min-h-screen bg-blue-100">
     <SideBar>
-      <main class="container grid grid-rows-[auto,1fr] gap-10 md:min-h-screen py-5 mx-auto">
+      <main class="container grid grid-rows-[auto,1fr] gap-10 tablet:min-h-screen py-5 mx-auto">
         <!-- Breadcrumb -->
         <div class="">
           <BreadCrumb
@@ -14,7 +14,7 @@
       </main>
     </SideBar>
 
-    <HelpButton />
+    <!-- <HelpButton /> -->
   </main>
 </template>
 
@@ -22,5 +22,5 @@
 import BreadCrumb from '@/components/BreadCrumb.vue'
 import SchedulesCalendar from '@/components/shared/calendar/SchedulesCalendar.vue'
 import SideBar from '@/components/SideBar.vue'
-import HelpButton from '@/components/HelpButton.vue'
+// import HelpButton from '@/components/HelpButton.vue'
 </script>

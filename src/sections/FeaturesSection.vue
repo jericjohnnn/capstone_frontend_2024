@@ -3,7 +3,7 @@
   <div id="features-section" class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
   <!-- Title -->
   <div class="max-w-2xl mx-auto text-center mb-10 lg:mb-14">
-      <h2 class="text-2xl  text-white font-bold md:text-4xl md:leading-tight">
+      <h2 class="text-2xl  text-white font-bold tablet:text-4xl tablet:leading-tight">
         App Features
       </h2>
       <p class="mt-1 text-blue-200">What we offer</p>
@@ -20,10 +20,10 @@
     <!-- Grid -->
     <div class="mt-5 lg:mt-16 grid lg:grid-cols-3 gap-8 lg:gap-12">
       <div class="lg:col-span-1">
-        <h2 class="font-bold text-2xl md:text-3xl text-white">
+        <h2 class="font-bold text-2xl tablet:text-3xl text-white">
           Empowering Learning Through Peer Connection
         </h2>
-        <p class="mt-2 md:mt-4 text-blue-200">
+        <p class="mt-2 tablet:mt-4 text-blue-200">
           TUDLO connects students with qualified peer tutors, creating an
           engaging learning environment where knowledge is shared and academic
           goals are achieved together.
@@ -31,7 +31,7 @@
       </div>
 
       <div class="lg:col-span-2">
-        <div class="grid sm:grid-cols-2 gap-8 md:gap-12">
+        <div class="grid sm:grid-cols-2 gap-8 tablet:gap-12">
           <!-- First Feature -->
           <div class="flex gap-x-5">
             <svg class="shrink-0 mt-1 size-6 text-blue-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">

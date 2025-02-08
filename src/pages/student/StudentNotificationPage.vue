@@ -5,8 +5,10 @@
         <div class="mb-6">
           <h1 class="text-lg font-bold text-black">Notifications</h1>
         </div>
-
-        <div class="bg-white rounded-lg shadow-sm border border-gray-200">
+        <div v-if="isLoading" class="flex justify-center py-8">
+          <LoaderSpinner />
+        </div>
+        <div v-else class="bg-white rounded-lg shadow-sm border border-gray-200">
           <!-- Empty state when no notifications -->
           <div v-if="notifications.length === 0" class="flex flex-col items-center justify-center py-12">
             <div class="text-blue-600 mb-3">
@@ -59,7 +61,7 @@
       </div>
     </SideBar>
 
-    <HelpButton />
+    <!-- <HelpButton /> -->
   </main>
 </template>
 
@@ -72,11 +74,13 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import SideBar from '@/components/SideBar.vue';
-import HelpButton from '@/components/HelpButton.vue';
+// import HelpButton from '@/components/HelpButton.vue';
 import axiosInstance from '@/axiosInstance';
+import LoaderSpinner from '@/components/Reusables/LoaderSpinner.vue';
 
 // Store notifications in a ref
 const notifications = ref([]);
+const isLoading = ref(true);
 
 // Fetch notifications from the API on component mount
 onMounted(async () => {
@@ -90,6 +94,8 @@ onMounted(async () => {
     });
   } catch (error) {
     console.error('Error fetching notifications:', error);
+  } finally {
+    isLoading.value = false;
   }
 });
 </script>

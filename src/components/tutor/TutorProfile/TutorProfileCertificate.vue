@@ -1,6 +1,6 @@
 <template>
   <div class="space-y-4">
-    <NotificationToast 
+    <NotificationToast
       :show="notification.show"
       :message="notification.message"
       :type="notification.type"
@@ -23,22 +23,22 @@
             />
           </span>
         </div>
-        
+
         <div class="flex-grow space-y-1">
           <p class="text-lg font-semibold text-gray-900">{{ certificate.title }}</p>
           <p class="text-sm text-gray-500 italic">{{ certificate.issuer }}</p>
           <p class="text-sm text-gray-600">{{ formatDate(certificate.date_issued) }}</p>
         </div>
-        
+
         <div class="flex sm:flex-col gap-3 mt-2 sm:mt-0">
-          <button 
-            @click="editCertificate(index)" 
+          <button
+            @click="editCertificate(index)"
             class="text-blue-600 text-sm hover:text-blue-700 transition-colors"
           >
             Edit
           </button>
-          <button 
-            @click="deleteCertificate(certificate.id, index)" 
+          <button
+            @click="deleteCertificate(certificate.id, index)"
             class="text-red-600 text-sm hover:text-red-700 transition-colors"
           >
             Delete
@@ -71,14 +71,14 @@
         </div>
 
         <div class="flex justify-end gap-2">
-          <button 
-            @click="cancelEdit(index)" 
+          <button
+            @click="cancelEdit(index)"
             class="px-4 py-1.5 text-sm text-gray-600 hover:text-gray-800 transition-colors"
           >
             Cancel
           </button>
-          <button 
-            @click="saveCertificate(index)" 
+          <button
+            @click="saveCertificate(index)"
             class="px-4 py-1.5 text-sm bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
           >
             Save
@@ -88,9 +88,9 @@
     </div>
 
     <!-- Add New Certificate Button -->
-    <button 
+    <button
       v-if="!addingNew"
-      @click="addNewCertificate" 
+      @click="addNewCertificate"
       class="w-full py-2 px-4 text-sm text-blue-600 border border-blue-600 rounded-lg hover:bg-blue-50 transition-colors"
     >
       + Add Certificate
@@ -119,14 +119,14 @@
       </div>
 
       <div class="flex justify-end gap-2">
-        <button 
-          @click="cancelNewCertificate" 
+        <button
+          @click="cancelNewCertificate"
           class="px-4 py-1.5 text-sm text-gray-600 hover:text-gray-800 transition-colors"
         >
           Cancel
         </button>
-        <button 
-          @click="saveNewCertificate" 
+        <button
+          @click="saveNewCertificate"
           class="px-4 py-1.5 text-sm bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
         >
           Save

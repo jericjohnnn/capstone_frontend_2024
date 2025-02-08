@@ -7,19 +7,19 @@
     </div>
     <div
       v-else
-      class="flex  md:px-3 flex-col md:flex-row items-center gap-4 text-center md:text-left"
+      class="flex  tablet:px-3 flex-col tablet:flex-row items-center gap-4 text-center tablet:text-left"
     >
       <img
         :src="tutor.profile_image || defaultProfileImage"
         alt="Tutor"
         class="w-20 h-20 rounded-full object-cover"
       />
-      <div class="flex-1 flex flex-col items-center md:items-start ">
+      <div class="flex-1 flex flex-col items-center tablet:items-start ">
         <StarRating :rating="averageRatings" class="mb-1" />
         <h2 class="text-lg font-semibold mb-1">
           {{ tutor.first_name }} {{ tutor.last_name }}
         </h2>
-        <div class="flex flex-wrap justify-center md:justify-start gap-2">
+        <div class="flex flex-wrap justify-center tablet:justify-start gap-2">
           <span
             v-for="subject in tutor.subjects"
             :key="subject.id"

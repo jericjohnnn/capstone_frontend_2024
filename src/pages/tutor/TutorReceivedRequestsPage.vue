@@ -1,11 +1,10 @@
 <template>
   <main class="bg-blue-100">
     <SideBar>
-      <main class="container grid grid-rows-[auto,1fr] gap-4 py-5">
+      <main class="min-h-[calc(100vh-20rem)] container grid grid-rows-[auto,1fr] gap-4 py-5">
         <BreadCrumb
           :breadcrumbs="[{ label: 'Requests', route: '/tutor/requests' }]"
         />
-
         <div>
           <RequestsTabs>
             <template #pending>
@@ -18,7 +17,7 @@
         </div>
       </main>
     </SideBar>
-    <FooterSection class="block md:hidden" />
+    <FooterSection class="block tablet:hidden" />
     <!-- <HelpButton /> -->
   </main>
 </template>

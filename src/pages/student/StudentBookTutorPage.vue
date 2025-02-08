@@ -1,13 +1,13 @@
 <template>
   <main class="min-h-screen bg-blue-100">
-    <NotificationToast 
+    <NotificationToast
       :show="notification.show"
       :message="notification.message"
       :type="notification.type"
     />
     <SideBar>
-      <div class="grid grid-cols-1 gap-4 min-h-screen py-5 ">
-        <div class="hidden md:block ">
+      <div class="grid grid-cols-1 gap-4 min-h-screen py-5">
+        <div class="hidden tablet:block">
           <BreadCrumb
             :breadcrumbs="[
               { label: 'Home', route: '/student/home' },
@@ -16,9 +16,9 @@
           />
         </div>
         <div
-          class="grid grid-cols-1 md:grid-rows-[auto,auto,1fr] md:grid-cols-2 gap-7 md:gap-4"
+          class="grid grid-cols-1 tablet:grid-rows-[auto,auto,1fr] tablet:grid-cols-2 gap-7 tablet:gap-4"
         >
-          <div class=" md:row-span-3  ">
+          <div class="tablet:row-span-3">
             <div>
               <TutorAvailability :tutor="tutorDetails" />
             </div>
@@ -35,10 +35,10 @@
               />
             </div>
           </div>
-          <div class=" order-first md:-order-none ">
+          <div class="order-first tablet:-order-none">
             <TutorInfo :tutor="tutorDetails" class="" />
           </div>
-          <div class="md:row-span-2 md:col-span-1 ">
+          <div class="tablet:row-span-2 tablet:col-span-1">
             <form @submit.prevent="submitBookingRequest" class="space-y-4">
               <div>
                 <SelectedDates
@@ -46,7 +46,9 @@
                   @remove-date="removeDate"
                 />
               </div>
-              <div class="space-y-4 md:space-y-0 md:grid md:grid-cols-2 md:gap-4 ">
+              <div
+                class="space-y-4 tablet:space-y-0 tablet:grid tablet:grid-cols-2 tablet:gap-4"
+              >
                 <div>
                   <SelectSubject
                     :tutor="tutorDetails"
@@ -79,9 +81,9 @@
                   @update:tutorMessage="updateTutorMessage"
                 />
               </div>
-              
-              <div class="hidden md:flex gap-5 ">
-                <router-link :to="{ name: 'StudentHome' }" class=" w-3/6 ">
+
+              <div class="hidden tablet:flex gap-5">
+                <router-link :to="{ name: 'StudentHome' }" class="w-3/6">
                   <button
                     type="button"
                     class="w-full px-4 py-3 text-blue-600 border border-blue-600 rounded-md hover:border-blue-400 hover:text-blue-400 transition"
@@ -91,6 +93,7 @@
                 </router-link>
                 <button
                   type="submit"
+                  :disabled="isLoading"
                   class="w-full px-4 py-3 text-white bg-blue-600 rounded-md hover:bg-blue-700"
                 >
                   BOOK
@@ -101,13 +104,14 @@
           <!-- STICKY BUTTON -->
           <div
             :class="[
-              'z-30 md:hidden rounded-xl bottom-0 w-full bg-blue-50 border border-white  px-4 py-3 border-t ',
+              'z-30 tablet:hidden rounded-xl bottom-0 w-full bg-blue-50 border border-white  px-4 py-3 border-t ',
               { sticky: !isKeyboardVisible },
             ]"
           >
             <div class="flex flex-col justify-center items-center gap-2">
               <div>Rate: ₱{{ tutorDetails.tutor_rate }}/Hour</div>
               <button
+                :disabled="isLoading"
                 @click="submitBookingRequest"
                 class="w-full bg-blue-600 text-white py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
               >
@@ -116,8 +120,8 @@
 
               <!-- Report Button -->
               <button
-              @click="router.back()"
-                class="w-full underline text-gray-500  py-2 text-sm font-medium hover:text-gray-700  transition-colors duration-200 flex items-center justify-center gap-1"
+                @click="router.back()"
+                class="w-full underline text-gray-500 py-2 text-sm font-medium hover:text-gray-700 transition-colors duration-200 flex items-center justify-center gap-1"
               >
                 Cancel
               </button>
@@ -126,7 +130,7 @@
         </div>
       </div>
     </SideBar>
-    <FooterSection class="block md:hidden" />
+    <FooterSection class="block tablet:hidden" />
   </main>
 </template>
 
@@ -213,7 +217,9 @@ const bookingState = reactive({ ...initialBookingState })
 
 const { notification, showNotification } = useNotification()
 
+const isLoading = ref(false)
 const submitBookingRequest = async () => {
+  isLoading.value = true
   const bookRequest = {
     tutor_id: route.params.tutorId,
     student_id: userData.value.id,
@@ -237,7 +243,7 @@ const submitBookingRequest = async () => {
   try {
     await axiosInstance.post('api/create-booking', bookRequest)
     showNotification('Booking request submitted successfully!')
-    
+
     // Add a delay before redirecting
     setTimeout(() => {
       router.push({ name: 'StudentRequests' })
@@ -245,9 +251,12 @@ const submitBookingRequest = async () => {
   } catch (error) {
     console.error('Error submitting form:', error)
     showNotification(
-      error.response?.data?.message || 'There was an error submitting the form.', 
-      'error'
+      error.response?.data?.message ||
+        'There was an error submitting the form.',
+      'error',
     )
+  } finally {
+    isLoading.value = false
   }
 }
 

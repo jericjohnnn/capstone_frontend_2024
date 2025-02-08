@@ -160,7 +160,7 @@
     <div
       :class="[
         'flex justify-between rounded-lg backdrop-blur-sm w-full z-30 bg-blue-50 border border-white  p-3 border-t ',
-        { 'sticky md:relative': !isKeyboardVisible },
+        { 'sticky tablet:relative': !isKeyboardVisible },
         bookDetails.status === 'Completed' ? 'hidden' : '',
       ]"
     >

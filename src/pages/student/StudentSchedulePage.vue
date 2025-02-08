@@ -1,7 +1,7 @@
 <template>
   <main class="min-h-screen bg-blue-100">
     <SideBar>
-      <main class="container grid grid-rows-[auto,1fr] gap-10 md:min-h-screen py-5 mx-auto ">
+      <main class="container grid grid-rows-[auto,1fr] gap-10 tablet:min-h-screen py-5 mx-auto ">
         <!-- Breadcrumb -->
         <div  class="">
           <BreadCrumb

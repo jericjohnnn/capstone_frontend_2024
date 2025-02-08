@@ -2,9 +2,9 @@
   <!-- component -->
   <section class="pt-24 bg-white">
     <div class="px-12 mx-auto max-w-7xl">
-      <div class="w-full mx-auto text-left md:w-11/12 xl:w-9/12 md:text-center">
+      <div class="w-full mx-auto text-left tablet:w-11/12 xl:w-9/12 tablet:text-center">
         <h1
-          class="mb-8 text-4xl font-extrabold leading-none tracking-normal text-gray-900 md:text-6xl md:tracking-tight"
+          class="mb-8 text-4xl font-extrabold leading-none tracking-normal text-gray-900 tablet:text-6xl tablet:tracking-tight"
         >
           <span>Empower Your </span>
           <span
@@ -13,10 +13,10 @@
           >
           <span>Journey with TUDLO's Peer Tutoring</span>
         </h1>
-        <p class="px-0 mb-8 text-lg text-gray-600 md:text-xl lg:px-24">
+        <p class="px-0 mb-8 text-lg text-gray-600 tablet:text-xl lg:px-24">
             Find the support you need from fellow students, and excel in your studies with personalized tutoring.
         </p>
-        <div class="mb-4 space-x-0 md:space-x-2 md:mb-8">
+        <div class="mb-4 space-x-0 tablet:space-x-2 tablet:mb-8">
           <router-link
             to="/login"
             class="inline-flex items-center justify-center w-full px-6 py-3 mb-2 text-lg text-white bg-blue-600 rounded-2xl sm:w-auto sm:mb-0"
@@ -38,7 +38,7 @@
 
         </div>
       </div>
-      <div class="w-full  shadow-lg mx-auto mt-20 text-center md:w-10/12">
+      <div class="w-full  shadow-lg mx-auto mt-20 text-center tablet:w-10/12">
         <div class="relative z-0 w-full mt-8">
           <div class="relative  overflow-hidden">
             <div

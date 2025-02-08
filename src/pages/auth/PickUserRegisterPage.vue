@@ -1,10 +1,10 @@
 <template>
   <NavBar />
   <div class="flex flex-col items-center justify-center min-h-screen text-center">
-    <h2 class="text-xl md:text-2xl">
-      Sign-up as: 
-      <span class="text-blue-500 font-bold">STUDENT</span> 
-      or 
+    <h2 class="text-xl tablet:text-2xl">
+      Sign-up as:
+      <span class="text-blue-500 font-bold">STUDENT</span>
+      or
       <span class="text-blue-500 font-bold">TUTOR</span>
     </h2>
 
@@ -14,9 +14,9 @@
         :class="{ 'border-blue-500': selectedRole === 'student', 'border-gray-200': selectedRole !== 'student' }"
         @click="selectRole('student')"
       >
-        <img 
-          :src="studentImage" 
-          alt="Student" 
+        <img
+          :src="studentImage"
+          alt="Student"
           class="w-20 h-20 mx-auto mb-3"
         />
         <h3 class="text-lg font-medium">STUDENT</h3>
@@ -27,20 +27,20 @@
         :class="{ 'border-blue-500': selectedRole === 'tutor', 'border-gray-200': selectedRole !== 'tutor' }"
         @click="selectRole('tutor')"
       >
-        <img 
-          :src="teacherImage" 
-          alt="Tutor" 
+        <img
+          :src="teacherImage"
+          alt="Tutor"
           class="w-20 h-20 mx-auto mb-3"
         />
         <h3 class="text-lg font-medium">TUTOR</h3>
       </div>
     </div>
 
-    <button 
-      class="mt-5 px-5 py-2.5 rounded bg-blue-500 text-white transition-colors duration-300 
-             disabled:bg-gray-300 disabled:cursor-not-allowed 
+    <button
+      class="mt-5 px-5 py-2.5 rounded bg-blue-500 text-white transition-colors duration-300
+             disabled:bg-gray-300 disabled:cursor-not-allowed
              enabled:hover:bg-blue-600"
-      :disabled="!selectedRole" 
+      :disabled="!selectedRole"
       @click="goToRegister"
     >
       Continue

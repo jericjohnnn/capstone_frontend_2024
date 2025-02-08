@@ -7,10 +7,10 @@
 
         <!-- Profile Content -->
         <div
-          class="flex flex-col md:flex-row mt-4 space-y-4 md:space-y-0 md:space-x-4"
+          class="flex flex-col tablet:flex-row mt-4 space-y-4 tablet:space-y-0 tablet:space-x-4"
         >
           <!-- Subjects, Rating, and Availability -->
-          <section class="w-full md:w-1/3 p-4 bg-white rounded-lg shadow-md">
+          <section class="w-full tablet:w-1/3 p-4 bg-white rounded-lg shadow-md">
             <div class="space-y-4">
               <div>
                 <h3 class="font-semibold">Ratings:</h3>
@@ -56,7 +56,7 @@
             </div>
 
             <div class="p-4 bg-white rounded-lg shadow-md">
-              <h3 class="font-semibold">Credentials</h3>
+              <h3 class="font-semibold">Proof of qualification</h3>
               <TutorProfileCredentials></TutorProfileCredentials>
             </div>
 
@@ -76,9 +76,9 @@
         </div>
       </main>
     </SideBar>
-    <FooterSection class="md:hidden" />
+    <FooterSection class="tablet:hidden" />
 
-    <HelpButton />
+    <!-- <HelpButton /> -->
   </main>
 </template>
 
@@ -95,7 +95,7 @@ import TutorProfileSubjects from '@/components/tutor/TutorProfile/TutorProfileSu
 import TutorProfileHeader from '@/components/tutor/TutorProfile/TutorProfileHeader.vue'
 import RatingsCarousel from '@/components/RatingsCarousel.vue'
 import SideBar from '@/components/SideBar.vue'
-import HelpButton from '@/components/HelpButton.vue'
+// import HelpButton from '@/components/HelpButton.vue'
 import StarRating from '@/components/StarRating.vue'
 import { computed, onMounted } from 'vue'
 import axiosInstance from '@/axiosInstance'

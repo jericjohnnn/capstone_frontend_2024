@@ -1,6 +1,6 @@
 <template>
   <div class="space-y-4">
-    <NotificationToast 
+    <NotificationToast
       :show="notification.show"
       :message="notification.message"
       :type="notification.type"
@@ -23,7 +23,7 @@
             />
           </span>
         </div>
-        
+
         <div class="flex-grow space-y-1">
           <p class="text-lg font-semibold text-gray-900">{{ school.name }}</p>
           <p class="text-sm text-gray-500 italic">{{ school.course }}</p>
@@ -31,16 +31,16 @@
             {{ formatDate(school.start_date) }} - {{ school.end_date ? formatDate(school.end_date) : 'Present' }}
           </p>
         </div>
-        
+
         <div class="flex sm:flex-col gap-3 mt-2 sm:mt-0">
-          <button 
-            @click="editSchool(index)" 
+          <button
+            @click="editSchool(index)"
             class="text-blue-600 text-sm hover:text-blue-700 transition-colors"
           >
             Edit
           </button>
-          <button 
-            @click="deleteSchool(school.id, index)" 
+          <button
+            @click="deleteSchool(school.id, index)"
             class="text-red-600 text-sm hover:text-red-700 transition-colors"
           >
             Delete
@@ -80,14 +80,14 @@
         </div>
 
         <div class="flex justify-end gap-2">
-          <button 
-            @click="cancelEdit(index)" 
+          <button
+            @click="cancelEdit(index)"
             class="px-4 py-1.5 text-sm text-gray-600 hover:text-gray-800 transition-colors"
           >
             Cancel
           </button>
-          <button 
-            @click="saveSchool(index)" 
+          <button
+            @click="saveSchool(index)"
             class="px-4 py-1.5 text-sm bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
           >
             Save
@@ -97,9 +97,9 @@
     </div>
 
     <!-- Add New Education Button -->
-    <button 
+    <button
       v-if="!addingNew"
-      @click="addNewSchool" 
+      @click="addNewSchool"
       class="w-full py-2 px-4 text-sm text-blue-600 border border-blue-600 rounded-lg hover:bg-blue-50 transition-colors"
     >
       + Add Education
@@ -135,14 +135,14 @@
       </div>
 
       <div class="flex justify-end gap-2">
-        <button 
-          @click="cancelNewSchool" 
+        <button
+          @click="cancelNewSchool"
           class="px-4 py-1.5 text-sm text-gray-600 hover:text-gray-800 transition-colors"
         >
           Cancel
         </button>
-        <button 
-          @click="saveNewSchool" 
+        <button
+          @click="saveNewSchool"
           class="px-4 py-1.5 text-sm bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
         >
           Save

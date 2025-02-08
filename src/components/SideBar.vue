@@ -1,7 +1,9 @@
 <template>
   <div>
     <!-- Mobile Breadcrumb -->
-    <div class="sticky top-0 inset-x-0 z-40 bg-white border-y px-4 sm:px-6 lg:px-8 lg:hidden">
+    <div
+      class="sticky top-0 inset-x-0 z-40 bg-white border-y px-4 sm:px-6 lg:px-8 lg:hidden"
+    >
       <div class="flex items-center py-2">
         <!-- Mobile Navigation Toggle -->
         <button
@@ -11,7 +13,7 @@
         >
           <span class="sr-only">Toggle Navigation</span>
           <svg
-            class="shrink-0 size-4"
+            class="shrink-0 size-6"
             xmlns="http://www.w3.org/2000/svg"
             width="24"
             height="24"
@@ -22,14 +24,16 @@
             stroke-linecap="round"
             stroke-linejoin="round"
           >
-            <rect width="18" height="18" x="3" y="3" rx="2" />
-            <path d="M15 3v18" />
-            <path d="m8 9 3 3-3 3" />
+            <line x1="4" y1="6" x2="20" y2="6" />
+            <line x1="4" y1="12" x2="20" y2="12" />
+            <line x1="4" y1="18" x2="20" y2="18" />
           </svg>
         </button>
 
         <ol class="ms-3 flex items-center whitespace-nowrap">
-          <li class="flex font-bold justify-center items-center text-sm text-gray-800">
+          <li
+            class="flex font-bold justify-center items-center text-sm text-gray-800"
+          >
             TUDLO
           </li>
         </ol>
@@ -41,7 +45,7 @@
       :class="[
         'fixed inset-y-0 start-0 z-50 w-[260px] transition-transform duration-300 lg:translate-x-0 lg:block',
         isSidebarOpen ? 'translate-x-0' : '-translate-x-full',
-        userType === 'Tutor' ? 'bg-white' : 'bg-blue-600'
+        userType === 'Tutor' ? 'bg-white' : 'bg-blue-600',
       ]"
     >
       <div class="relative flex flex-col h-full">
@@ -54,13 +58,15 @@
             <img
               src="/tudlo_logo.webp"
               alt="Logo"
-              class="h-36 "
+              class="h-28 lg:h-32 rounded-3xl"
             />
           </a>
         </div>
 
         <!-- Navigation Content -->
-        <div class="h-full overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
+        <div
+          class="h-full overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100"
+        >
           <nav class="p-3 w-full flex flex-col h-full">
             <!-- Tutor Navigation -->
             <div v-if="userType === 'Tutor'" class="flex-1">
@@ -72,10 +78,19 @@
                     :class="[
                       $route.name === item.route
                         ? 'bg-blue-600 text-white'
-                        : 'text-blue-600 hover:bg-blue-50'
+                        : 'text-blue-600 hover:bg-blue-50',
                     ]"
                   >
-                    <component :is="item.icon" :class="userType === 'Tutor' ? ($route.name === item.route ? 'fill-white' : 'fill-blue-600') : 'fill-white'"/>
+                    <component
+                      :is="item.icon"
+                      :class="
+                        userType === 'Tutor'
+                          ? $route.name === item.route
+                            ? 'fill-white'
+                            : 'fill-blue-600'
+                          : 'fill-white'
+                      "
+                    />
                     {{ item.label }}
                   </router-link>
                 </li>
@@ -100,12 +115,20 @@
 
             <!-- User Profile & Logout Section -->
             <div class="mt-auto">
-              <hr :class="userType === 'Tutor' ? 'my-4 border-gray-200' : 'my-4 border-white/20'" />
+              <hr
+                :class="
+                  userType === 'Tutor'
+                    ? 'my-4 border-gray-200'
+                    : 'my-4 border-white/20'
+                "
+              />
               <div class="flex items-center gap-x-4 px-2.5 py-3">
-                <div :class="[
-                  'rounded-full w-10 h-10 overflow-hidden',
-                  userType === 'Tutor' ? 'bg-blue-50' : 'bg-white/10'
-                ]">
+                <div
+                  :class="[
+                    'rounded-full w-10 h-10 overflow-hidden',
+                    userType === 'Tutor' ? 'bg-blue-50' : 'bg-white/10',
+                  ]"
+                >
                   <img
                     :src="userProfileImage || defaultProfileImage"
                     alt="profile image"
@@ -113,14 +136,20 @@
                   />
                 </div>
                 <div class="flex flex-col">
-                  <span :class="[
-                    'text-sm font-medium',
-                    userType === 'Tutor' ? 'text-blue-600' : 'text-white'
-                  ]">{{ userData?.first_name }} {{ userData?.last_name }}</span>
-                  <span :class="[
-                    'text-xs',
-                    userType === 'Tutor' ? 'text-blue-400' : 'text-white/70'
-                  ]">{{ userEmail }}</span>
+                  <span
+                    :class="[
+                      'text-sm font-medium',
+                      userType === 'Tutor' ? 'text-blue-600' : 'text-white',
+                    ]"
+                    >{{ userData?.first_name }} {{ userData?.last_name }}</span
+                  >
+                  <span
+                    :class="[
+                      'text-xs',
+                      userType === 'Tutor' ? 'text-blue-400' : 'text-white/70',
+                    ]"
+                    >{{ userEmail }}</span
+                  >
                 </div>
               </div>
               <button
@@ -129,10 +158,12 @@
                   'w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm rounded-md transition-colors duration-200',
                   userType === 'Tutor'
                     ? 'text-blue-600 hover:bg-blue-50'
-                    : 'text-white hover:bg-white/10'
+                    : 'text-white hover:bg-white/10',
                 ]"
               >
-                <LogoutIcon :class="userType === 'Tutor' ? 'fill-blue-600' : 'fill-white'" />
+                <LogoutIcon
+                  :class="userType === 'Tutor' ? 'fill-blue-600' : 'fill-white'"
+                />
                 Logout
               </button>
             </div>
@@ -142,7 +173,7 @@
     </div>
 
     <!-- Main Content -->
-    <div class="w-full md:min-h-screen px-4 sm:px-6 md:px-8 lg:ps-72">
+    <div class="w-full tablet:min-h-screen px-4 sm:px-6 tablet:px-8 lg:ps-72">
       <slot></slot>
     </div>
 
@@ -178,7 +209,7 @@ const userData = JSON.parse(localStorage.getItem('user_data') || '{}')
 const userProfileImage = userData?.profile_image
 
 // Default profile image as base64 SVG
-  const defaultProfileImage =
+const defaultProfileImage =
   'data:image/svg+xml;base64,' +
   btoa(`
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -192,7 +223,11 @@ const tutorNavItems = [
   { label: 'Profile', route: 'TutorProfile', icon: ProfileIcon },
   { label: 'Schedule', route: 'TutorSchedule', icon: ScheduleIcon },
   { label: 'Student requests', route: 'TutorRequests', icon: RequestIcon },
-  { label: 'Notifications', route: 'TutorNotifications', icon: NotificationIcon },
+  {
+    label: 'Notifications',
+    route: 'TutorNotifications',
+    icon: NotificationIcon,
+  },
 ]
 
 const studentNavItems = [
@@ -200,7 +235,11 @@ const studentNavItems = [
   { label: 'Profile', route: 'StudentProfile', icon: ProfileIcon },
   { label: 'Schedule', route: 'StudentSchedule', icon: ScheduleIcon },
   { label: 'Your requests', route: 'StudentRequests', icon: RequestIcon },
-  { label: 'Notifications', route: 'StudentNotifications', icon: NotificationIcon }
+  {
+    label: 'Notifications',
+    route: 'StudentNotifications',
+    icon: NotificationIcon,
+  },
 ]
 
 // Logout function
@@ -211,7 +250,7 @@ async function logout() {
     // const itemsToRemove = ['app_auth_token', 'user_type', 'user_email', 'user_data', 'user_full_name']
     // itemsToRemove.forEach(item => localStorage.removeItem(item))
 
-    localStorage.clear();
+    localStorage.clear()
 
     // Remove authorization header
     delete axiosInstance.defaults.headers['Authorization']

@@ -9,7 +9,11 @@ export default {
     './node_modules/preline/preline.js',
   ],
   theme: {
-    extend: {},
+    extend: {
+      screens: {
+        'tablet': '900px',
+      },
+    },
   },
   plugins: [
     forms,

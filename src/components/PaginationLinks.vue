@@ -4,7 +4,7 @@
       <!-- Previous Button -->
       <button
         @click="handleClick(links?.[0])"
-        :disabled="!links?.[0]?.url"  
+        :disabled="!links?.[0]?.url"
         type="button"
         class="min-h-[38px] min-w-[38px] py-2 px-2.5 inline-flex justify-center items-center gap-x-2 text-sm rounded-md text-gray-800 hover:bg-blue-50 focus:outline-none focus:bg-blue-50 disabled:opacity-50 disabled:pointer-events-none transition-colors duration-200"
         aria-label="Previous"
@@ -31,7 +31,7 @@
       <!-- Next Button -->
       <button
         @click="handleClick(links?.[links?.length - 1])"
-        :disabled="!links?.[links?.length - 1]?.url"  
+        :disabled="!links?.[links?.length - 1]?.url"
         type="button"
         class="min-h-[38px] min-w-[38px] py-2 px-2.5 inline-flex justify-center items-center gap-x-2 text-sm rounded-md text-gray-800 hover:bg-blue-50 focus:outline-none focus:bg-blue-50 disabled:opacity-50 disabled:pointer-events-none transition-colors duration-200"
       >

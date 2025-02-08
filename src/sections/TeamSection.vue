@@ -2,7 +2,7 @@
   <div id="team-section" class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto bg-white">
     <!-- Title -->
     <div class="max-w-2xl mx-auto text-center mb-10 lg:mb-14">
-      <h2 class="text-2xl  text-blue-600 font-bold md:text-4xl md:leading-tight">
+      <h2 class="text-2xl  text-blue-600 font-bold tablet:text-4xl tablet:leading-tight">
         Our team
       </h2>
       <p class="mt-1 text-gray-600">People behind the app</p>
@@ -11,7 +11,7 @@
 
     <!-- Grid -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      <div class="flex flex-col rounded-xl p-4 md:p-6 bg-white border border-gray-200">
+      <div class="flex flex-col rounded-xl p-4 tablet:p-6 bg-white border border-gray-200">
         <div class="flex items-center gap-x-4">
           <img
             class="rounded-full size-20"
@@ -90,7 +90,7 @@
       </div>
       <!-- End Col -->
 
-      <div class="flex flex-col rounded-xl p-4 md:p-6 bg-white border border-gray-200">
+      <div class="flex flex-col rounded-xl p-4 tablet:p-6 bg-white border border-gray-200">
         <div class="flex items-center gap-x-4">
           <img
             class="rounded-full size-20"
@@ -169,7 +169,7 @@
       </div>
       <!-- End Col -->
 
-      <div class="flex flex-col rounded-xl p-4 md:p-6 bg-white border border-gray-200">
+      <div class="flex flex-col rounded-xl p-4 tablet:p-6 bg-white border border-gray-200">
         <div class="flex items-center gap-x-4">
           <img
             class="rounded-full size-20"
@@ -248,7 +248,7 @@
       </div>
       <!-- End Col -->
 
-      <div class="flex flex-col rounded-xl p-4 md:p-6 bg-white border border-gray-200">
+      <div class="flex flex-col rounded-xl p-4 tablet:p-6 bg-white border border-gray-200">
         <div class="flex items-center gap-x-4">
           <img
             class="rounded-full size-20"
@@ -327,7 +327,7 @@
       </div>
       <!-- End Col -->
 
-      <div class="flex flex-col rounded-xl p-4 md:p-6 bg-white border border-gray-200">
+      <div class="flex flex-col rounded-xl p-4 tablet:p-6 bg-white border border-gray-200">
         <div class="flex items-center gap-x-4">
           <img
             class="rounded-full size-20"

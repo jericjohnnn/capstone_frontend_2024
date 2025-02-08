@@ -1,7 +1,7 @@
 <template>
   <div class="mb-2.5">
     <div
-      class="bg-blue-50 border border-white shadow-sm rounded-xl hover:shadow-md focus:outline-none focus:shadow-lg transition"
+      class="bg-blue-50 border border-white shadow-sm rounded-xl hover:shadow-md focus:outline-none focus:shadow-md transition"
     >
       <!-- Tutor Info Section -->
       <div class="p-3 flex items-center justify-between">
@@ -16,11 +16,11 @@
 
           <div class="flex flex-col gap-1">
             <h1
-              class="text-sm md:text-base font-bold text-gray-800 line-clamp-1"
+              class="text-sm tablet:text-base font-bold text-gray-800 line-clamp-1"
             >
               {{ tutor.tutor_name }}
             </h1>
-            <div class="flex items-center gap-2">
+            <div class="flex flex-wrap items-center gap-2">
               <span
                 v-for="(subject, index) in tutor.tutor_subjects"
                 :key="index"
@@ -40,14 +40,14 @@
           <button
             @click="triggerSelectTutor"
             type="button"
-            class="hidden md:block py-1.5 px-4 text-xs font-medium rounded-md border border-blue-600 text-blue-600 hover:bg-blue-50 transition-colors duration-200"
+            class="hidden tablet:block py-1.5 px-4 text-xs font-medium rounded-md border border-blue-600 text-blue-600 hover:bg-blue-50 transition-colors duration-200"
           >
             View Profile
           </button>
           <button
             @click="triggerSelectTutorMobile"
             type="button"
-            class="block md:hidden py-1.5 px-3 text-xs font-medium rounded-md border border-blue-600 text-blue-600 hover:bg-blue-50 transition-colors duration-200"
+            class="block tablet:hidden py-1.5 px-3 text-xs font-medium rounded-md border border-blue-600 text-blue-600 hover:bg-blue-50 transition-colors duration-200"
           >
             View Profile
           </button>

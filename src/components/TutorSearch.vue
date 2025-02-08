@@ -1,6 +1,6 @@
 <template>
   <div class="w-full mx-auto">
-    <div class="flex flex-col md:flex-row gap-3">
+    <div class="flex flex-col tablet:flex-row gap-3">
       <!-- Tutor Search -->
       <div class="flex-1">
         <div class="relative">
@@ -60,7 +60,7 @@
       </div>
 
       <!-- Search Button -->
-      <div class="md:w-32">
+      <div class="tablet:w-32">
         <button
           type="button"
           @click="handleSearchAction"
@@ -89,17 +89,31 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import axiosInstance from '@/axiosInstance';
+
+const props = defineProps({
+  selectedSubject: {
+    type: String,
+    default: null
+  }
+})
+
+watch(() => props.selectedSubject, (newVal) => {
+  if (newVal) {
+    subject.value = newVal
+    handleSearchAction()
+  }
+})
 
 const tutor = ref('');
 const subject = ref('');
 
-const emit = defineEmits(['update:search-results'])
+const emit = defineEmits(['update:search-results', 'reset-search-results']);
 
 const handleSearchAction = async () => {
   if (tutor.value === '' && subject.value === '') {
-    console.log('jamal');
+    emit('reset-search-results')
     return;
   }
 

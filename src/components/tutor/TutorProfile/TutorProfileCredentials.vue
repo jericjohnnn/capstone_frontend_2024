@@ -35,7 +35,7 @@
       @click="openFileSelector"
       class="w-full py-2 px-4 text-sm text-blue-600 border border-blue-600 rounded-lg hover:bg-blue-50 transition-colors"
     >
-      + Add Credentials
+      + Add Qualifications
     </button>
     <input
       type="file"

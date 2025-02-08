@@ -1,6 +1,6 @@
 <template>
   <main>
-    <NotificationToast 
+    <NotificationToast
       :show="notification.show"
       :message="notification.message"
       :type="notification.type"
@@ -18,17 +18,17 @@
           </div>
 
           <div class="divide-y divide-gray-200">
-            <div 
-              v-for="(field, fieldIndex) in section.fields" 
+            <div
+              v-for="(field, fieldIndex) in section.fields"
               :key="fieldIndex"
-              class="grid grid-cols-1 md:grid-cols-2 px-6 py-4 items-center"
+              class="grid grid-cols-1 tablet:grid-cols-2 px-6 py-4 items-center"
             >
               <span class="text-sm text-gray-600">{{ field.label }}</span>
-              
+
               <template v-if="field.type === 'image'">
-                <img 
+                <img
                   :src="currentProfileImage"
-                  class="w-24 h-24 md:w-20 md:h-20 rounded-full object-cover bg-gray-200"
+                  class="w-24 h-24 tablet:w-20 tablet:h-20 rounded-full object-cover bg-gray-200"
                   alt="Profile Image"
                 />
               </template>
@@ -50,7 +50,7 @@
               <h3 class="text-sm font-medium text-gray-900">{{ action.title }}</h3>
               <p class="text-xs text-gray-600 mt-1">{{ action.description }}</p>
             </div>
-            <button 
+            <button
               @click="action.handler"
               :class="`px-4 py-2 text-sm font-medium text-white ${action.buttonClass} rounded-md transition-colors`"
             >
@@ -146,7 +146,7 @@
 
           <div>
             <label class="block text-sm font-medium text-gray-700 mb-1">Grade Level</label>
-            <select 
+            <select
               v-model="editData.grade_year"
               class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md"
             >
@@ -168,15 +168,15 @@
         </div>
 
         <div class="flex justify-end space-x-3 mt-6">
-          <button 
-            type="button" 
-            @click="cancelEdit" 
+          <button
+            type="button"
+            @click="cancelEdit"
             class="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-md hover:bg-gray-200"
           >
             Cancel
           </button>
-          <button 
-            type="submit" 
+          <button
+            type="submit"
             class="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700"
           >
             Save Changes
@@ -191,16 +191,16 @@
     <div class="bg-white rounded-lg shadow-xl w-full max-w-md mx-4 p-6">
       <h3 class="text-lg font-semibold text-black mb-2">Delete Account</h3>
       <p class="text-sm text-gray-600 mb-6">Are you sure you want to delete your account? This action cannot be undone.</p>
-      
+
       <div class="flex justify-end space-x-3">
-        <button 
-          @click="closeDeleteModal" 
+        <button
+          @click="closeDeleteModal"
           class="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-md hover:bg-gray-200 transition-colors"
         >
           Cancel
         </button>
-        <button 
-          @click="deleteAccount" 
+        <button
+          @click="deleteAccount"
           class="px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-md hover:bg-red-700 transition-colors"
         >
           Delete Account
@@ -319,7 +319,7 @@ const handleFileUpload = e => {
       showNotification('Image size should be less than 5MB', 'error')
       return
     }
-    
+
     selectedImage.value = file
     currentProfileImage.value = URL.createObjectURL(file)
   }
@@ -327,7 +327,7 @@ const handleFileUpload = e => {
 
 const submitNewDetails = async () => {
   const formData = new FormData()
-  
+
   // Only append fields that have values
   Object.entries(editData).forEach(([key, value]) => {
     if (value) formData.append(key, value)
