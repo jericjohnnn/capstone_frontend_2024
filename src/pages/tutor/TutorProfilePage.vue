@@ -7,10 +7,10 @@
 
         <!-- Profile Content -->
         <div
-          class="flex flex-col md:flex-row mt-4 space-y-4 md:space-y-0 md:space-x-4"
+          class="flex flex-col tablet:flex-row mt-4 space-y-4 tablet:space-y-0 tablet:space-x-4"
         >
           <!-- Subjects, Rating, and Availability -->
-          <section class="w-full md:w-1/3 p-4 bg-white rounded-lg shadow-md">
+          <section class="w-full tablet:w-1/3 p-4 bg-white rounded-lg shadow-md">
             <div class="space-y-4">
               <div>
                 <h3 class="font-semibold">Ratings:</h3>
@@ -76,7 +76,7 @@
         </div>
       </main>
     </SideBar>
-    <FooterSection class="md:hidden" />
+    <FooterSection class="tablet:hidden" />
 
     <HelpButton />
   </main>

@@ -1,6 +1,6 @@
 <template>
   <div class="w-full mx-auto">
-    <div class="flex flex-col md:flex-row gap-3">
+    <div class="flex flex-col tablet:flex-row gap-3">
       <!-- Tutor Search -->
       <div class="flex-1">
         <div class="relative">
@@ -60,7 +60,7 @@
       </div>
 
       <!-- Search Button -->
-      <div class="md:w-32">
+      <div class="tablet:w-32">
         <button
           type="button"
           @click="handleSearchAction"

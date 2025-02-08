@@ -3,7 +3,7 @@
   <label class=" text-base ">Subject:</label>
   <select
     v-model="selectedSubject"
-    class="w-full mt-2 border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500"
+    class="w-full mt-2 border-gray-300 rounded-tablet shadow-sm focus:border-blue-500 focus:ring-blue-500"
   >
     <option
       v-for="subject in tutor.subjects"

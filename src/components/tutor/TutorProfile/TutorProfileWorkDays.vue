@@ -1,6 +1,6 @@
 <template>
   <div class="mb-6">
-    <NotificationToast 
+    <NotificationToast
       :show="notification.show"
       :message="notification.message"
       :type="notification.type"
@@ -8,8 +8,8 @@
 
     <div class="flex justify-between items-center mb-3">
       <h3 class="font-medium">Days available</h3>
-      <button 
-        @click="toggleEditMode" 
+      <button
+        @click="toggleEditMode"
         class="text-blue-600 text-sm hover:text-blue-700 transition-colors"
       >
         {{ isEditing ? 'Cancel' : 'Edit' }}
@@ -18,8 +18,8 @@
 
     <!-- Display Mode -->
     <div v-if="!isEditing" class="flex flex-wrap gap-2">
-      <div 
-        v-if="availableDays.length === 0" 
+      <div
+        v-if="availableDays.length === 0"
         class="text-gray-500 text-sm w-full text-center py-2"
       >
         No days set
@@ -35,7 +35,7 @@
 
     <!-- Edit Mode -->
     <div v-else class="space-y-3">
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-2">
+      <div class="grid grid-cols-1 sm:grid-cols-2 tablet:grid-cols-1 lg:grid-cols-2 gap-2">
         <div
           v-for="day in daysOfWeek"
           :key="day"

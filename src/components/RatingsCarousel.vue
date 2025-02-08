@@ -17,17 +17,17 @@
             'opacity-50': index !== currentIndex,
           }"
         >
-          <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg border border-gray-200 transition-shadow">
+          <div class="bg-white p-6 rounded-lg shadow-tablet hover:shadow-lg border border-gray-200 transition-shadow">
             <!-- Card Content -->
             <div class="flex">
               <div class="flex flex-col w-full bg-white rounded-xl">
-                <div class="flex-auto p-4 md:p-6">
-                  <p class="text-base italic md:text-lg text-gray-800">
+                <div class="flex-auto p-4 tablet:p-6">
+                  <p class="text-base italic tablet:text-lg text-gray-800">
                     "{{ rating.comment }}"
                   </p>
                 </div>
 
-                <div class="p-4 bg-gray-100 rounded-b-xl md:px-7">
+                <div class="p-4 bg-gray-100 rounded-b-xl tablet:px-7">
                   <div class="flex items-center gap-x-3">
                     <div class="shrink-0">
                       <img

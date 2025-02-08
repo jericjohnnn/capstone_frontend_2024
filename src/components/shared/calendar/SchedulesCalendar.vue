@@ -10,7 +10,7 @@
       :events="events"
       :on-event-click="goToBookingDetails"
       small
-      class="bg-white min-h-[450px] max-h-[450px] md:min-h-[calc(100vh-14rem)] md:max-h-[calc(100vh-14rem)] rounded-lg"
+      class="bg-white min-h-[450px] max-h-[450px] tablet:min-h-[calc(100vh-14rem)] tablet:max-h-[calc(100vh-14rem)] rounded-lg"
     >
       <!-- <template #title="{ view }">
         <span class="" v-if="view.id === 'month'">{{

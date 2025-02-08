@@ -18,7 +18,7 @@
         </div>
       </main>
     </SideBar>
-    <FooterSection class="block md:hidden" />
+    <FooterSection class="block tablet:hidden" />
     <!-- <HelpButton /> -->
   </main>
 </template>

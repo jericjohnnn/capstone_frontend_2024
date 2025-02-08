@@ -1,6 +1,6 @@
 <template>
   <div class="w-full shadow-sm">
-    <NotificationToast 
+    <NotificationToast
       :show="notification.show"
       :message="notification.message"
       :type="notification.type"
@@ -146,7 +146,7 @@
     <div
       :class="[
         'flex justify-between rounded-lg backdrop-blur-sm w-full z-30 bg-blue-50 border border-white  p-3 border-t ',
-        { 'sticky md:relative': !isKeyboardVisible },
+        { 'sticky tablet:relative': !isKeyboardVisible },
         bookDetails.status === 'Completed' ? 'hidden' : ''
       ]"
     >
@@ -164,7 +164,7 @@
             negotiate
           </button>
         </div>
-        <div class="space-x-4 flex justify-center md:justify-end w-full" :class="bookDetails.messages.length === 1 ? 'w-fit' : ''">
+        <div class="space-x-4 flex justify-center tablet:justify-end w-full" :class="bookDetails.messages.length === 1 ? 'w-fit' : ''">
           <button
             @click="updateBookingStatus('Canceled')"
             class="p-2 border text-blue-600 border-blue-600 rounded-md"

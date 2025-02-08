@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <NotificationToast 
+    <NotificationToast
       :show="notification.show"
       :message="notification.message"
       :type="notification.type"
@@ -26,52 +26,52 @@
     <!-- Tutor Cards -->
     <div
       v-if="!pendingRequests"
-      class="min-h-[calc(100vh-15rem)] justify-center flex"
+      class="min-h-[calc(100vh-20rem)] justify-center flex"
     >
       <div class="flex items-center justify-center">
         <LoaderSpinner />
       </div>
     </div>
-    <div 
-      v-else-if="pendingRequests.length === 0" 
-      class="min-h-[calc(100vh-15rem)] flex items-center justify-center"
+    <div
+      v-else-if="pendingRequests.length === 0"
+      class="min-h-[calc(100vh-20rem)] flex items-center justify-center"
     >
       <p class="text-gray-600 text-lg">It's empty, start finding your tutor to fill this in</p>
     </div>
     <div v-else v-for="book in pendingRequests" :key="book.id" class="mb-3">
       <div
-        class="grid grid-rows-[auto,1fr,auto] md:grid-cols-3 md:grid-rows-1 p-3 gap-2 rounded-xl bg-blue-200 border-blue-50 border-2"
+        class="grid grid-rows-[auto,1fr,auto] tablet:grid-cols-3 tablet:grid-rows-1 p-3 gap-2 rounded-xl bg-blue-200 border-blue-50 border-2"
       >
         <div class="flex items-center gap-2">
           <div class="shrink-0">
             <img
-              class="shrink-0 size-12 md:size-16 rounded-full"
+              class="shrink-0 size-12 tablet:size-16 rounded-full"
               :src="book.tutor.profile_image || defaultProfileImage"
               alt="profile image"
             />
           </div>
           <div
-            class="flex justify-between w-full md:flex-col items-center md:items-start"
+            class="flex justify-between w-full tablet:flex-col items-center tablet:items-start"
           >
-            <h1 class="text-base grow md:text-lg font-medium text-gray-800">
+            <h1 class="text-base grow tablet:text-lg font-medium text-gray-800">
               {{ book.tutor.first_name }} {{ book.tutor.last_name }}
             </h1>
             <button
               @click="selectTutor(book.tutor_id)"
-              class="hidden md:block w-3/6 py-1.5 px-3 text-xs font-medium rounded-md border border-blue-600 text-blue-600 hover:bg-blue-50 transition-colors duration-200"
+              class="hidden tablet:block w-3/6 py-1.5 px-3 text-xs font-medium rounded-tablet border border-blue-600 text-blue-600 hover:bg-blue-50 transition-colors duration-200"
             >
               View Profile
             </button>
             <div class="">
               <p
-                class="md:hidden block font-semibold"
+                class="tablet:hidden block font-semibold"
                 :class="book.status == 'Completed' ? 'text-green-600' : ''"
               >
                 {{ book.status }}
               </p>
               <button
                 @click="openRateModal(book.tutor_id)"
-                class="block md:hidden w-full py-1.5 px-3 text-xs font-medium rounded-md border border-blue-600 text-blue-600 hover:bg-blue-50 transition-colors duration-200"
+                class="block tablet:hidden w-full py-1.5 px-3 text-xs font-medium rounded-tablet border border-blue-600 text-blue-600 hover:bg-blue-50 transition-colors duration-200"
                 :class="book.status !== 'Completed' ? 'hidden' : ''"
               >
                 Rate tutor
@@ -80,10 +80,10 @@
           </div>
         </div>
 
-        <hr class="block md:hidden my-2 border-white" />
+        <hr class="block tablet:hidden my-2 border-white" />
 
         <div
-          class="flex justify-between md:flex-col items-center order-first md:order-none md:justify-center"
+          class="flex justify-between tablet:flex-col items-center order-first tablet:order-none tablet:justify-center"
         >
           <p class="">You requested for</p>
           <div
@@ -94,27 +94,27 @@
         </div>
 
         <div
-          class="flex justify-between md:justify-end gap-3 w-full items-center md:col-span-1"
+          class="flex justify-between tablet:justify-end gap-3 w-full items-center tablet:col-span-1"
         >
           <p
-            class="hidden md:block font-semibold"
+            class="hidden tablet:block font-semibold"
             :class="book.status == 'Completed' ? 'text-green-600' : ''"
           >
             {{ book.status }}
           </p>
-          <div class="w-full h-full md:hidden">
+          <div class="w-full h-full tablet:hidden">
             <button
               @click="selectTutorMobile(book.tutor_id)"
-              class="h-full w-full md:w-fit py-1.5 px-3 text-xs font-medium rounded-md border border-blue-600 text-blue-600 hover:bg-blue-50 transition-colors duration-200"
+              class="h-full w-full tablet:w-fit py-1.5 px-3 text-xs font-medium rounded-tablet border border-blue-600 text-blue-600 hover:bg-blue-50 transition-colors duration-200"
             >
               View Profile
             </button>
           </div>
-          <div class="w-full md:w-3/6">
+          <div class="w-full tablet:w-3/6">
             <button
               @click="openRateModal(book.tutor_id)"
-              class="hidden md:block w-full py-1.5 px-3 text-xs font-medium rounded-lg border border-blue-600 text-blue-600 hover:bg-blue-50 transition-colors duration-200"
-              :class="book.status !== 'Completed' ? 'md:hidden' : ''"
+              class="hidden tablet:block w-full py-1.5 px-3 text-xs font-medium rounded-lg border border-blue-600 text-blue-600 hover:bg-blue-50 transition-colors duration-200"
+              :class="book.status !== 'Completed' ? 'tablet:hidden' : ''"
             >
               Rate tutor
             </button>
@@ -122,7 +122,7 @@
             <button
               @click="goToBookDetails(book.id)"
               type="button"
-              class="w-full py-2 px-4 text-sm md:text-xs font-normal rounded-lg border border-blue-400 bg-blue-600 text-white hover:bg-blue-700 focus:outline-none"
+              class="w-full py-2 px-4 text-sm tablet:text-xs font-normal rounded-lg border border-blue-400 bg-blue-600 text-white hover:bg-blue-700 focus:outline-none"
             >
               {{ book.status !== 'Completed' ? 'Review request' : 'View info' }}
             </button>

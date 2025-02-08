@@ -171,7 +171,7 @@
           </div>
 
           <!-- Bottom Row Grid -->
-          <div class="grid md:grid-cols-2 gap-4">
+          <div class="grid tablet:grid-cols-2 gap-4">
             <div class="bg-gray-50 p-4 rounded-lg text-center">
               <h4
                 class="font-medium text-gray-900 mb-3 flex items-center justify-center gap-2"

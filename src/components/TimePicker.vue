@@ -1,8 +1,8 @@
 <template>
   <!-- <div class="outline grid grid-cols-2 gap-3 grid-flow-row py-2"></div> -->
-  <div class=" grid grid-rows-3 gap-3 py-2 md:grid-rows-2">
+  <div class=" grid grid-rows-3 gap-3 py-2 tablet:grid-rows-2">
     <div class="flex  items-center text-sm ">
-      <label class="min-w-12 md:min-w-10 ">Start:</label>
+      <label class="min-w-12 tablet:min-w-10 ">Start:</label>
       <div class=" flex w-full gap-1">
         <select v-model="startHour" class="grow text-sm rounded">
           <option v-for="hour in 12" :key="hour" :value="hour">
@@ -21,7 +21,7 @@
     </div>
 
     <div class="flex  items-center text-sm ">
-      <label class="min-w-12 md:min-w-10 ">End:</label>
+      <label class="min-w-12 tablet:min-w-10 ">End:</label>
       <div class=" flex w-full gap-1">
         <select v-model="endHour" class="grow text-sm rounded">
           <option v-for="hour in 12" :key="hour" :value="hour">
@@ -38,14 +38,14 @@
         </select>
       </div>
     </div>
-    <div class=" md:col-span-2">
+    <div class=" tablet:col-span-2">
       <button
         @click="addTime"
         class="w-full text-white p-2 roundedtransition-colors "
         :disabled="isDisabled"
       >
-        <p class="block md:hidden">{{ isDisabled ? 'Select a date above' : 'Add time' }}</p>
-        <p class="hidden md:block">{{ isDisabled ? 'Select a date below' : 'Add time' }}</p>
+        <p class="block tablet:hidden">{{ isDisabled ? 'Select a date above' : 'Add time' }}</p>
+        <p class="hidden tablet:block">{{ isDisabled ? 'Select a date below' : 'Add time' }}</p>
       </button>
     </div>
   </div>

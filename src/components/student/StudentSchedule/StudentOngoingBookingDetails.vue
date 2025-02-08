@@ -24,10 +24,10 @@
 
     <SideBar>
       <main
-        class="container grid grid-rows-[auto,auto,1fr] grid-cols-1 md:grid-rows-[auto,1fr] md:grid-cols-5 py-5 gap-4 min-h-screen"
+        class="container grid grid-rows-[auto,auto,1fr] grid-cols-1 tablet:grid-rows-[auto,1fr] tablet:grid-cols-5 py-5 gap-4 min-h-screen"
       >
         <!-- Breadcrumb -->
-        <div class="col-span-1 md:col-span-5">
+        <div class="col-span-1 tablet:col-span-5">
           <BreadCrumb
             :breadcrumbs="[
               { label: 'Schedule', route: '/student/schedule' },
@@ -38,17 +38,17 @@
 
         <!-- Overview Section -->
         <div
-          class="md:row-span-1 md:col-span-2 bg-white rounded-lg py-3 md:overflow-auto shadow-sm scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200"
-          :class="!bookDetails ? 'md:overflow-hidden' : ''"
+          class="tablet:row-span-1 tablet:col-span-2 bg-white rounded-lg py-3 tablet:overflow-auto shadow-sm scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200"
+          :class="!bookDetails ? 'tablet:overflow-hidden' : ''"
         >
           <h2 class="text-xl font-medium text-center">Overview</h2>
           <div
             v-if="!bookDetails"
-            class="flex min-h-40 justify-center items-center md:h-full"
+            class="flex min-h-40 justify-center items-center tablet:h-full"
           >
             <LoaderSpinner />
           </div>
-          <div v-if="bookDetails" class="flex flex-col gap-4 px-2 md:px-5 py-4">
+          <div v-if="bookDetails" class="flex flex-col gap-4 px-2 tablet:px-5 py-4">
             <!-- Profile Section -->
             <div class="flex items-center gap-2">
               <div class="shrink-0">
@@ -66,7 +66,7 @@
                   </p>
                   <button
                     @click="openReportModal"
-                    class="border-2 border-blue-600 text-blue-600 rounded-md px-2 py-1 text-sm"
+                    class="border-2 border-blue-600 text-blue-600 rounded-tablet px-2 py-1 text-sm"
                   >
                     Report
                   </button>
@@ -167,7 +167,7 @@
                 <button
                   :disabled="isExpired"
                   @click="updateBookingStatus('Completed')"
-                  class="bg-blue-400 w-full p-2 rounded-md text-white hover:bg-blue-500 transition-colors"
+                  class="bg-blue-400 w-full p-2 rounded-tablet text-white hover:bg-blue-500 transition-colors"
                 >
                   Mark as Complete
                 </button>
@@ -178,15 +178,15 @@
 
         <!-- Messages Section -->
         <div
-          class="row-span-1 md:col-span-3 md:max-h-[calc(100vh-4.8rem)] md:overflow-auto bg-white rounded-lg p-3 shadow-sm"
+          class="row-span-1 tablet:col-span-3 tablet:max-h-[calc(100vh-4.8rem)] tablet:overflow-auto bg-white rounded-lg p-3 shadow-sm"
         >
           <div
             v-if="!bookDetails"
-            class="flex min-h-40 justify-center items-center md:h-full"
+            class="flex min-h-40 justify-center items-center tablet:h-full"
           >
             <LoaderSpinner />
           </div>
-          <div v-if="bookDetails" class="md:px-3">
+          <div v-if="bookDetails" class="tablet:px-3">
             <h2 class="text-xl font-medium text-center pb-2">Messages</h2>
             <div class="space-y-6">
               <div
@@ -242,7 +242,7 @@
         <!--  -->
       </main>
     </SideBar>
-    <FooterSection class="md:hidden" />
+    <FooterSection class="tablet:hidden" />
     <HelpButton />
   </main>
 </template>

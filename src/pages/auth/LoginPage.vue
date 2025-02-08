@@ -8,10 +8,10 @@
     />
     <div
       class="flex bg-white w-full shadow-md rounded-lg flex-col justify-center items-center
-             p-6 sm:p-8 md:p-12 lg:p-16
+             p-6 sm:p-8 tablet:p-12 lg:p-16
              mx-4 sm:mx-auto
-             min-h-[calc(100vh-5rem)] md:min-h-0
-             sm:w-11/12 md:w-8/12 lg:w-6/12 xl:w-5/12
+             min-h-[calc(100vh-5rem)] tablet:min-h-0
+             sm:w-11/12 tablet:w-8/12 lg:w-6/12 xl:w-5/12
              space-y-6"
     >
       <div class="w-full max-w-md">

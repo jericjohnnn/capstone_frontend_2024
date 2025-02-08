@@ -20,7 +20,7 @@
             >
               {{ tutor.tutor_name }}
             </h1>
-            <div class="flex items-center gap-2">
+            <div class="flex flex-wrap items-center gap-2">
               <span
                 v-for="(subject, index) in tutor.tutor_subjects"
                 :key="index"

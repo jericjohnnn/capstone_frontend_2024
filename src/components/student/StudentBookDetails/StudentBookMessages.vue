@@ -62,7 +62,7 @@
         <p>Your message:</p>
         <button
           @click="toggleCalendar"
-          class="p-2 bg-blue-600 text-white rounded-md"
+          class="p-2 bg-blue-600 text-white rounded-tablet"
         >
           Change dates
         </button>
@@ -160,7 +160,7 @@
     <div
       :class="[
         'flex justify-between rounded-lg backdrop-blur-sm w-full z-30 bg-blue-50 border border-white  p-3 border-t ',
-        { 'sticky md:relative': !isKeyboardVisible },
+        { 'sticky tablet:relative': !isKeyboardVisible },
         bookDetails.status === 'Completed' ? 'hidden' : '',
       ]"
     >
@@ -188,13 +188,13 @@
         <div class="space-x-4">
           <button
             @click="updateBookingStatus('Canceled')"
-            class="p-2 border text-blue-600 border-blue-600 rounded-md"
+            class="p-2 border text-blue-600 border-blue-600 rounded-tablet"
           >
             decline
           </button>
           <button
             @click="updateBookingStatus('Ongoing')"
-            class="p-2 bg-blue-600 text-white rounded-md"
+            class="p-2 bg-blue-600 text-white rounded-tablet"
           >
             accept
           </button>
@@ -204,13 +204,13 @@
       <div v-if="isNegotiating" class="flex justify-center w-full gap-4">
         <button
           @click="handleCancelNegotiation"
-          class="p-2 border text-slate-600 border-slate-600 rounded-md"
+          class="p-2 border text-slate-600 border-slate-600 rounded-tablet"
         >
           cancel
         </button>
         <button
           @click="submitNegotiation"
-          class="p-2 bg-blue-600 text-white rounded-md"
+          class="p-2 bg-blue-600 text-white rounded-tablet"
         >
           submit
         </button>

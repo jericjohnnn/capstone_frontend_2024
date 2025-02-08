@@ -1,9 +1,9 @@
 <template>
   <!-- Subscribe -->
   <div id="contact-section" class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-16 mx-auto">
-    <div class="grid md:grid-cols-2 gap-8">
+    <div class="grid tablet:grid-cols-2 gap-8">
       <div class="max-w-md">
-        <h2 class="text-2xl font-bold md:text-3xl md:leading-tight text-white">
+        <h2 class="text-2xl font-bold tablet:text-3xl tablet:leading-tight text-white">
           Subscribe
         </h2>
         <p class="mt-3 text-blue-100">
@@ -12,7 +12,7 @@
       </div>
 
       <form>
-        <div class="w-full sm:max-w-lg md:ms-auto">
+        <div class="w-full sm:max-w-lg tablet:ms-auto">
           <div class="flex flex-col items-center gap-2 sm:flex-row sm:gap-3">
             <div class="w-full">
               <label for="hero-input" class="sr-only">Search</label>

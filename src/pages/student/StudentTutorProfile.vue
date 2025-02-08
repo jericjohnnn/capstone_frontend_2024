@@ -13,28 +13,28 @@
       <LoaderSpinner />
     </div>
     <!-- Show content only when tutor data exists -->
-    <div v-else class="-mx-4 sm:-mx-6 md:-mx-8">
+    <div v-else class="-mx-4 sm:-mx-6 tablet:-mx-8">
       <div class="flex flex-col bg-white h-full">
         <!-- Header Section with Blue Background -->
         <div class="bg-gradient-to-r from-blue-600 to-blue-500 p-5 flex-none">
           <div
-            class="flex flex-col md:flex-row md:justify-between items-center gap-4"
+            class="flex flex-col tablet:flex-row tablet:justify-between items-center gap-4"
           >
             <!-- Tutor Info - Centered on mobile -->
             <div
-              class="flex flex-col items-center text-center md:items-start md:text-left md:flex-row md:w-3/5 gap-4"
+              class="flex flex-col items-center text-center tablet:items-start tablet:text-left tablet:flex-row tablet:w-3/5 gap-4"
             >
               <img
                 alt="Tutor avatar"
                 :src="tutor.profile_image || defaultProfileImage"
-                class="w-20 h-20 md:w-16 md:h-16 shrink-0 rounded-full object-cover border-2 border-blue-300/30"
+                class="w-20 h-20 tablet:w-16 tablet:h-16 shrink-0 rounded-full object-cover border-2 border-blue-300/30"
               />
               <div class="text-white">
                 <h2 class="font-semibold text-xl">
                   {{ tutor.first_name }} {{ tutor.last_name }}
                 </h2>
                 <div
-                  class="flex items-center justify-center md:justify-start gap-2 mt-1 text-blue-100"
+                  class="flex items-center justify-center tablet:justify-start gap-2 mt-1 text-blue-100"
                 >
                   <svg
                     class="w-4 h-4"
@@ -61,7 +61,7 @@
             </div>
 
             <!-- Actions -->
-            <div class="flex-col items-end gap-2 hidden md:flex">
+            <div class="flex-col items-end gap-2 hidden tablet:flex">
               <button
                 @click="goToBook"
                 class="bg-white px-6 py-2 rounded-md text-blue-600 font-medium hover:bg-blue-50 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-white/50"
@@ -381,7 +381,7 @@
 
         <!-- Mobile Book Now Button -->
         <div
-          class="md:hidden sticky bottom-0 w-full bg-white px-4 py-3 border-t border-gray-200"
+          class="tablet:hidden sticky bottom-0 w-full bg-white px-4 py-3 border-t border-gray-200"
         >
           <div class="flex flex-col gap-2">
             <button
@@ -419,7 +419,7 @@
     </div>
   </SideBar>
 
-  <FooterSection class="md:hidden" />
+  <FooterSection class="tablet:hidden" />
 </template>
 
 <script setup>
