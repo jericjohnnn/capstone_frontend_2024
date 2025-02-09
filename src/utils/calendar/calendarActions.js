@@ -1,3 +1,4 @@
+import { formatTimeToInteger } from "../dateTime";
 
 
 const isEventOverlap = (newStart, newEnd, event) => {
@@ -16,6 +17,26 @@ export const checkEventOverlap = (newStart, newEnd, events) => {
     return true
   }
   return false
+};
+
+export const checkIfBeyondBusinessHours = (newStart, newEnd, startHour, endHour) => {
+  const newStartHour = formatTimeToInteger(newStart) * 60;
+  const newEndHour = formatTimeToInteger(newEnd) * 60;
+
+  if (newStartHour < startHour || newEndHour > endHour) {
+    return true;
+  }
+  return false;
+};
+
+export const checkIfTimeIsBackwards = (newStart, newEnd) => {
+  const newStartHour = formatTimeToInteger(newStart) * 60;
+  const newEndHour = formatTimeToInteger(newEnd) * 60;
+
+  if (newStartHour >= newEndHour) {
+    return true;
+  }
+  return false;
 };
 
 export const formatNewEvent = (selectedDate, startTime, endTime) => {
