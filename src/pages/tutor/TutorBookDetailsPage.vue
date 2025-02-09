@@ -172,12 +172,13 @@
           class="tablet:row-span-1 tablet:col-span-3 tablet:max-h-[calc(100vh-4.8rem)] tablet:overflow-scroll tablet:overflow-x-hidden scrollbar-thin bg-white rounded-lg p-3 shadow-sm"
         >
           <div
-            v-if="!bookDetails"
+            v-if="!bookDetails || isLoading"
             class="flex min-h-40 justify-center items-center tablet:h-full"
           >
             <LoaderSpinner />
           </div>
           <div v-else class="">
+            <button :disabled="isLoading" @click="fetchBookingDetails(route.params.bookId)" class="py-1 px-3 bg-blue-600 text-white rounded-md mb-2">Refresh</button>
             <BookMessages
               :bookDetailsProps="bookDetails"
               :tutorBookings="fetchedTutorBookings"
@@ -256,7 +257,9 @@ const fetchOngoingStudentBookings = async studentId => {
   }
 }
 
+const isLoading = ref(false)
 const fetchBookingDetails = async bookId => {
+  isLoading.value = true
   try {
     const response = await axiosInstance.get(
       `/api/book-request-details/${bookId}`,
@@ -272,6 +275,8 @@ const fetchBookingDetails = async bookId => {
   } catch (err) {
     console.error('Error fetching booking details:', err)
     router.push({ name: 'NotFound' })
+  } finally {
+    isLoading.value = false
   }
 }
 
