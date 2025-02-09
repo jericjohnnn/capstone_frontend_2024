@@ -49,13 +49,18 @@
           >
             <LoaderSpinner />
           </div>
-          <div v-if="bookDetails" class="flex flex-col gap-4 px-2 tablet:px-5 py-4">
+          <div
+            v-if="bookDetails"
+            class="flex flex-col gap-4 px-2 tablet:px-5 py-4"
+          >
             <!-- Profile Section -->
             <div class="flex items-center gap-2">
               <div class="shrink-0">
                 <img
                   class="h-14 w-14 rounded-full"
-                  :src="bookDetails.student.profile_image || defaultProfileImage"
+                  :src="
+                    bookDetails.student.profile_image || defaultProfileImage
+                  "
                   alt="profile image"
                 />
               </div>
@@ -85,7 +90,7 @@
                     'px-3 py-1 rounded-full text-sm text-center w-full',
                     bookDetails.status === 'Completed'
                       ? 'bg-green-100 text-green-800'
-                      : 'bg-yellow-100 text-yellow-800'
+                      : 'bg-yellow-100 text-yellow-800',
                   ]"
                 >
                   {{ bookDetails.status || 'pending' }}
@@ -172,7 +177,7 @@
           >
             <LoaderSpinner />
           </div>
-          <div v-if="bookDetails" class="">
+          <div v-else class="">
             <BookMessages
               :bookDetailsProps="bookDetails"
               :tutorBookings="fetchedTutorBookings"
@@ -184,7 +189,7 @@
         </div>
       </main>
     </SideBar>
-    <FooterSection class="tablet:hidden"/>
+    <FooterSection class="tablet:hidden" />
   </main>
 </template>
 
@@ -348,8 +353,9 @@ const handleReportSubmit = async () => {
   } catch (error) {
     console.error('Error submitting report:', error)
     showNotification(
-      error.response?.data?.message || 'Failed to submit report. Please try again.',
-      'error'
+      error.response?.data?.message ||
+        'Failed to submit report. Please try again.',
+      'error',
     )
   }
 }
