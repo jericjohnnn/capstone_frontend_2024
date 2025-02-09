@@ -21,17 +21,20 @@
 
         <!-- Overview Section -->
         <div
-          class="tablet:row-span-1 tablet:col-span-2 bg-white rounded-lg py-3  tablet:overflow-auto shadow-sm scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200"
+          class="tablet:row-span-1 tablet:col-span-2 bg-white rounded-lg py-3 tablet:overflow-auto shadow-sm scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200"
           :class="!bookDetails ? 'tablet:overflow-hidden' : ''"
         >
           <h2 class="text-xl font-medium text-center">Overview</h2>
           <div
             v-if="!bookDetails"
-            class="flex min-h-40 justify-center items-center  tablet:h-full"
+            class="flex min-h-40 justify-center items-center tablet:h-full"
           >
             <LoaderSpinner />
           </div>
-          <div v-if="bookDetails" class="flex flex-col gap-4 px-2 tablet:px-5 py-4">
+          <div
+            v-if="bookDetails"
+            class="flex flex-col gap-4 px-2 tablet:px-5 py-4"
+          >
             <!-- Profile Section -->
             <div class="flex items-center gap-2">
               <div class="shrink-0">
@@ -67,7 +70,7 @@
                     'px-3 py-1 rounded-full text-sm text-center w-full',
                     bookDetails.status === 'Completed'
                       ? 'bg-green-100 text-green-800'
-                      : 'bg-yellow-100 text-yellow-800'
+                      : 'bg-yellow-100 text-yellow-800',
                   ]"
                 >
                   {{ bookDetails.status || 'pending' }}
@@ -135,9 +138,7 @@
                   class="text-blue-600 w-full"
                 >
                   {{ formatDate(dateTime.start_time) }}
-                  {{
-                    formatTo12Hour(extractTimeFromISO(dateTime.start_time))
-                  }}
+                  {{ formatTo12Hour(extractTimeFromISO(dateTime.start_time)) }}
                   -
                   {{ formatTo12Hour(extractTimeFromISO(dateTime.end_time)) }}
                 </div>
@@ -148,27 +149,27 @@
 
         <!-- Messages Section -->
         <div
-          class="tablet:row-span-1 tablet:col-span-3 tablet:max-h-[calc(100vh-4.8rem)]  tablet:overflow-scroll tablet:overflow-x-hidden scrollbar-thin bg-white rounded-lg p-3 shadow-sm"
+          class="tablet:row-span-1 tablet:col-span-3 tablet:max-h-[calc(100vh-4.8rem)] tablet:overflow-scroll tablet:overflow-x-hidden scrollbar-thin bg-white rounded-lg p-3 shadow-sm"
         >
-        <div
+          <div
             v-if="!bookDetails"
             class="flex min-h-40 justify-center items-center tablet:h-full"
           >
             <LoaderSpinner />
           </div>
           <div v-if="bookDetails" class="">
-          <StudentBookMessages
-            :bookDetailsProps="bookDetails"
-            :tutorBookings="fetchedTutorBookings"
-            :tutorWorkDays="tutorWorkDays"
-            :studentBookings="fetchedStudentBookings"
-            class=""
-          />
-        </div>
+            <StudentBookMessages
+              :bookDetailsProps="bookDetails"
+              :tutorBookings="fetchedTutorBookings"
+              :tutorWorkDays="tutorWorkDays"
+              :studentBookings="fetchedStudentBookings"
+              class=""
+            />
+          </div>
         </div>
       </main>
     </SideBar>
-    <FooterSection class="tablet:hidden"/>
+    <FooterSection class="tablet:hidden" />
     <!-- <HelpButton /> -->
   </main>
   <PopUpModal
@@ -202,8 +203,8 @@ import {
   extractTimeFromISO,
   formatTo12Hour,
 } from '@/utils/dateTime'
-import LoaderSpinner from '@/components/Reusables/LoaderSpinner.vue';
-import FooterSection from '@/sections/FooterSection.vue';
+import LoaderSpinner from '@/components/Reusables/LoaderSpinner.vue'
+import FooterSection from '@/sections/FooterSection.vue'
 import PopUpModal from '@/components/Reusables/PopUpModal.vue'
 import ReportForm from '@/components/Reusables/ReportForm.vue'
 import NotificationToast from '@/components/Reusables/NotificationToast.vue'
@@ -352,8 +353,9 @@ const handleReportSubmit = async () => {
   } catch (error) {
     console.error('Error submitting report:', error)
     showNotification(
-      error.response?.data?.message || 'Failed to submit report. Please try again.',
-      'error'
+      error.response?.data?.message ||
+        'Failed to submit report. Please try again.',
+      'error',
     )
   }
 }
