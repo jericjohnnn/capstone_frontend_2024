@@ -1,6 +1,6 @@
 <template>
   <div>
-    <label class=" text-base ">
+    <label class=" text-base tablet:text-sm">
       {{
         learningPreference === 'Online'
           ? 'Video Platform:'

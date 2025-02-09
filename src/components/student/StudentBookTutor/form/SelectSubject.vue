@@ -1,6 +1,6 @@
 <template>
 <div>
-  <label class=" text-base ">Subject:</label>
+  <label class=" text-base tablet:text-sm">Subject:</label>
   <select
     v-model="selectedSubject"
     class="w-full mt-2 border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500"

@@ -1,7 +1,7 @@
 <template>
   <div class="">
     <div class="flex justify-between">
-      <label class="text-base ">Contact number:</label>
+      <label class="text-base tablet:text-sm">Contact number:</label>
       <div class="flex flex-wrap gap-4 ">
         <button
           type="button"

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <label class="text-base ">Message:</label>
+    <label class="text-base tablet:text-sm">Message:</label>
     <div class=" bg-white mt-2 p-3 rounded-lg">
       <div class="flex flex-col gap-2   overflow-hidden">
         <input
