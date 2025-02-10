@@ -49,13 +49,18 @@
           >
             <LoaderSpinner />
           </div>
-          <div v-if="bookDetails" class="flex flex-col gap-4 px-2 tablet:px-5 py-4">
+          <div
+            v-if="bookDetails"
+            class="flex flex-col gap-4 px-2 tablet:px-5 py-4"
+          >
             <!-- Profile Section -->
             <div class="flex items-center gap-2">
               <div class="shrink-0">
                 <img
                   class="h-14 w-14 rounded-full"
-                  :src="bookDetails.student.profile_image || defaultProfileImage"
+                  :src="
+                    bookDetails.student.profile_image || defaultProfileImage
+                  "
                   alt="profile image"
                 />
               </div>
@@ -85,7 +90,7 @@
                     'px-3 py-1 rounded-full text-sm text-center w-full',
                     bookDetails.status === 'Completed'
                       ? 'bg-green-100 text-green-800'
-                      : 'bg-yellow-100 text-yellow-800'
+                      : 'bg-yellow-100 text-yellow-800',
                   ]"
                 >
                   {{ bookDetails.status || 'pending' }}
@@ -167,12 +172,13 @@
           class="tablet:row-span-1 tablet:col-span-3 tablet:max-h-[calc(100vh-4.8rem)] tablet:overflow-scroll tablet:overflow-x-hidden scrollbar-thin bg-white rounded-lg p-3 shadow-sm"
         >
           <div
-            v-if="!bookDetails"
+            v-if="!bookDetails || isLoading"
             class="flex min-h-40 justify-center items-center tablet:h-full"
           >
             <LoaderSpinner />
           </div>
-          <div v-if="bookDetails" class="">
+          <div v-else class="">
+            <button :disabled="isLoading" @click="fetchBookingDetails(route.params.bookId)" class="py-1 px-3 bg-blue-600 text-white rounded-md mb-2">Refresh</button>
             <BookMessages
               :bookDetailsProps="bookDetails"
               :tutorBookings="fetchedTutorBookings"
@@ -184,7 +190,7 @@
         </div>
       </main>
     </SideBar>
-    <FooterSection class="tablet:hidden"/>
+    <FooterSection class="tablet:hidden" />
   </main>
 </template>
 
@@ -251,7 +257,9 @@ const fetchOngoingStudentBookings = async studentId => {
   }
 }
 
+const isLoading = ref(false)
 const fetchBookingDetails = async bookId => {
+  isLoading.value = true
   try {
     const response = await axiosInstance.get(
       `/api/book-request-details/${bookId}`,
@@ -267,6 +275,8 @@ const fetchBookingDetails = async bookId => {
   } catch (err) {
     console.error('Error fetching booking details:', err)
     router.push({ name: 'NotFound' })
+  } finally {
+    isLoading.value = false
   }
 }
 
@@ -348,8 +358,9 @@ const handleReportSubmit = async () => {
   } catch (error) {
     console.error('Error submitting report:', error)
     showNotification(
-      error.response?.data?.message || 'Failed to submit report. Please try again.',
-      'error'
+      error.response?.data?.message ||
+        'Failed to submit report. Please try again.',
+      'error',
     )
   }
 }

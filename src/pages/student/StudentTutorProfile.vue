@@ -356,6 +356,45 @@
             </div>
           </div>
 
+                <!-- Credentials Section -->
+      <div>
+        <h3
+          class="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2"
+        >
+          <svg
+            class="w-5 h-5 text-blue-500"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M5 13l4 4L19 7"
+            />
+          </svg>
+          Proof of qualification
+        </h3>
+
+        <div
+          v-if="!tutor.credentials || tutor.credentials.length === 0"
+          class="text-gray-500"
+        >
+          <p>No credentials information available.</p>
+        </div>
+
+        <div v-else class="flex flex-wrap gap-3 justify-center">
+          <div
+            v-for="credential in tutor.credentials"
+            :key="credential.id"
+            class=""
+          >
+          <Image :src="credential.image" alt="Image" width="250" preview />
+          </div>
+        </div>
+      </div>
+
           <!-- Ratings Section -->
           <div>
             <div class="flex items-center gap-3 mb-4">
@@ -439,6 +478,7 @@ import PopUpModal from '@/components/Reusables/PopUpModal.vue'
 import ReportForm from '@/components/Reusables/ReportForm.vue'
 import NotificationToast from '@/components/Reusables/NotificationToast.vue'
 import { useNotification } from '@/composables/useNotification'
+import { Image } from 'primevue'
 
 const defaultProfileImage =
   'data:image/svg+xml;base64,' +

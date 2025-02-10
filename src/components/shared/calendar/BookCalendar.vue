@@ -62,6 +62,8 @@ import {
 } from '@/utils/calendar/calendarViews'
 import {
   checkEventOverlap,
+  checkIfBeyondBusinessHours,
+  checkIfTimeIsBackwards,
   getBusinessHours,
   formatNewEvent,
 } from '@/utils/calendar/calendarActions'
@@ -130,6 +132,25 @@ const addScheduleRequest = () => {
     selectedCellDate.value,
     selectedEndTime.value,
   )
+
+  const isBeyondBusinessHours = checkIfBeyondBusinessHours(
+    selectedStartTime.value,
+    selectedEndTime.value,
+    specialHours.value["1"][0].from,
+    specialHours.value["1"][1].to,
+  )
+
+  if (isBeyondBusinessHours) {
+    showNotification("Please select a time within the tutor's available schedule.", 'error')
+    return
+  }
+
+  const isTimeBackwards = checkIfTimeIsBackwards(selectedStartTime.value, selectedEndTime.value)
+
+  if (isTimeBackwards) {
+    showNotification("Please choose a valid schedule.", 'error')
+    return
+  }
 
   const hasOverlap = checkEventOverlap(newStart, newEnd, events.value)
 
