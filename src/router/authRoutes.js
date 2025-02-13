@@ -3,6 +3,7 @@ import LoginPage from '@/pages/auth/LoginPage.vue';
 import PickUserRegisterPage from '@/pages/auth/PickUserRegisterPage.vue';
 import TutorRegisterPage from '@/pages/auth/TutorRegisterPage.vue';
 import StudentRegisterPage from '@/pages/auth/StudentRegisterPage.vue';
+import ForgotPasswordPage from '@/pages/auth/ForgotPasswordPage.vue';
 
 const authRoutes = [
   {
@@ -14,6 +15,11 @@ const authRoutes = [
     path: '/login',
     name: 'Login',
     component: LoginPage
+  },
+  {
+    path: '/forgot-password',
+    name: 'ForgotPassword',
+    component: ForgotPasswordPage
   },
   {
     path: '/register',
