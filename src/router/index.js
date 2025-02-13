@@ -35,6 +35,7 @@ router.beforeEach((to, from, next) => {
     'Main',
     'Login',
     'Register',
+    'ForgotPassword',
     'TutorRegister',
     'StudentRegister',
   ]
@@ -58,8 +59,8 @@ router.beforeEach((to, from, next) => {
 
     // Handle Tutor specific routes
     if (userType === 'Tutor') {
-      if (userData.approval_status === 'Pending' && 
-          to.name !== 'TutorPendingApproval' && 
+      if (userData.approval_status === 'Pending' &&
+          to.name !== 'TutorPendingApproval' &&
           to.path !== '/') {
         return next('/tutor/pending-approval')
       }else{

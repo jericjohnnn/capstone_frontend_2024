@@ -138,7 +138,7 @@ import { useRouter, useRoute } from 'vue-router'
 const router = useRouter()
 const route = useRoute()
 const hideNavElements = computed(() => {
-  return (!isLoggedIn.value && (route.path === '/login' || route.path === '/register')) ||
+  return (!isLoggedIn.value && (route.path === '/login' || route.path === '/register' || route.path === '/forgot-password')) ||
          route.path === '/tutor/pending-approval'
 })
 

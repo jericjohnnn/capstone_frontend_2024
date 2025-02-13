@@ -46,11 +46,9 @@
               <label for="password" class="block text-sm sm:text-base font-medium text-gray-900">
                 Password
               </label>
-              <div>
-                <a href="#" class="text-sm sm:text-base font-semibold text-blue-600 hover:text-blue-500 transition-colors duration-200">
+              <router-link to="/forgot-password" class="text-sm sm:text-base font-semibold text-blue-600 hover:text-blue-500 transition-colors duration-200">
                   Forgot password?
-                </a>
-              </div>
+              </router-link>
             </div>
             <div>
               <input
