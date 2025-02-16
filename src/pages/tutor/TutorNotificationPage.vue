@@ -62,7 +62,7 @@
 
                 <!-- Notification content -->
                 <div class="flex-1 min-w-0">
-                  <p class="text-sm font-medium text-gray-900">{{ notification.message }}</p>
+                  <p class="text-sm font-medium text-gray-900">{{ notification.data.message }}</p>
                   <p class="text-xs text-gray-500 mt-1">
                     {{ new Date(notification.created_at).toLocaleDateString('en-US', {
                       year: 'numeric',
