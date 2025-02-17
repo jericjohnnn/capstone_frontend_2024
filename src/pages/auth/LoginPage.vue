@@ -121,11 +121,12 @@ const handleLogin = async () => {
       password: password.value,
     })
 
-    const { user_email, user_full_name, user_type, user_data, token } =
+    const { user_id, user_email, user_full_name, user_type, user_data, token } =
       response.data
 
     // Store token in localStorage
     localStorage.setItem('app_auth_token', token)
+    localStorage.setItem('user_id', user_id)
     localStorage.setItem('user_type', user_type)
     localStorage.setItem('user_email', user_email)
     localStorage.setItem('user_full_name', user_full_name)
