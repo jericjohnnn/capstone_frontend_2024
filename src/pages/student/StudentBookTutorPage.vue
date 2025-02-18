@@ -16,10 +16,10 @@
           />
         </div>
         <div
-          class="grid grid-cols-1 tablet:grid-rows-[auto,auto,1fr] tablet:grid-cols-2 gap-7 tablet:gap-4"
+          class=" grid grid-cols-1 tablet:grid-rows-[auto,auto,1fr] tablet:grid-cols-2 gap-7 tablet:gap-4"
         >
           <div class="tablet:row-span-3">
-            <div v-if="!tutorDetails" class="flex justify-center items-center">
+            <div v-if="!tutorDetails" class="h-full flex justify-center items-center">
               <LoaderSpinner />
             </div>
             <div v-else>
@@ -43,7 +43,7 @@
           </div>
           <div
             v-if="!tutorDetails"
-            class="flex justify-center h-full items-center"
+            class="min-h-96 flex justify-center items-center"
           >
             <LoaderSpinner />
           </div>
