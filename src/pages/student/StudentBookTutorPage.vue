@@ -19,31 +19,35 @@
           class="grid grid-cols-1 tablet:grid-rows-[auto,auto,1fr] tablet:grid-cols-2 gap-7 tablet:gap-4"
         >
           <div class="tablet:row-span-3">
-            <div v-if="tutorDetails">
-              <TutorAvailability :tutor="tutorDetails" />
-            </div>
             <div v-if="!tutorDetails" class="flex justify-center items-center">
               <LoaderSpinner />
             </div>
             <div v-else>
-              <BookCalendar
-                :idToRemove="idToRemove"
-                :tutorBookings="tutorBookings"
-                :tutorWorkDays="tutorWorkDays"
-                :studentBookings="studentBookings"
-                @update:added-schedules="storePendingBookingDates"
-              />
+              <TutorAvailability :tutor="tutorDetails" />
+              <div>
+                <BookCalendar
+                  :idToRemove="idToRemove"
+                  :tutorBookings="tutorBookings"
+                  :tutorWorkDays="tutorWorkDays"
+                  :studentBookings="studentBookings"
+                  @update:added-schedules="storePendingBookingDates"
+                />
+              </div>
             </div>
           </div>
-          <div class="order-first tablet:-order-none">
-            <div v-if="tutorDetails">
-              <TutorInfo :tutor="tutorDetails" class="" />
-            </div>
-            <div v-if="!tutorDetails" class="flex justify-center items-center">
-              <LoaderSpinner />
-            </div>
+          <div v-if="!tutorDetails" class="flex justify-center items-center">
+            <LoaderSpinner />
           </div>
-          <div class="tablet:row-span-2 tablet:col-span-1">
+          <div v-else class="order-first tablet:-order-none">
+            <TutorInfo :tutor="tutorDetails" class="" />
+          </div>
+          <div
+            v-if="!tutorDetails"
+            class="flex justify-center h-full items-center"
+          >
+            <LoaderSpinner />
+          </div>
+          <div v-else class="tablet:row-span-2 tablet:col-span-1">
             <form @submit.prevent="submitBookingRequest" class="space-y-4">
               <div>
                 <SelectedDates
@@ -55,15 +59,10 @@
                 class="space-y-4 tablet:space-y-0 tablet:grid tablet:grid-cols-2 tablet:gap-4"
               >
                 <div>
-                  <div v-if="tutorDetails">
-                    <SelectSubject
-                      :tutor="tutorDetails"
-                      @update:selectedSubject="updateSelectedSubject"
-                    />
-                  </div>
-                  <div v-if="!tutorDetails" class="flex justify-center items-center">
-                    <LoaderSpinner />
-                  </div>
+                  <SelectSubject
+                    :tutor="tutorDetails"
+                    @update:selectedSubject="updateSelectedSubject"
+                  />
                 </div>
                 <div>
                   <SelectLearningPreference
@@ -119,7 +118,14 @@
             ]"
           >
             <div class="flex flex-col justify-center items-center gap-2">
-              <div>Rate: {{ tutorDetails ? `₱${tutorDetails.tutor_rate}/Hour` : 'Loading...' }}</div>
+              <div>
+                Rate:
+                {{
+                  tutorDetails
+                    ? `₱${tutorDetails.tutor_rate}/Hour`
+                    : 'Loading...'
+                }}
+              </div>
               <button
                 :disabled="isLoading"
                 @click="submitBookingRequest"
