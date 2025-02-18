@@ -12,7 +12,6 @@
             Refresh
           </button>
         </div>
-        <button @click="console.log(JSON.stringify(notifications, null, 2))">CLICK ME</button>
 
         <!-- Error state -->
         <div v-if="error" class="bg-red-50 text-red-600 p-4 rounded-lg mb-4">
