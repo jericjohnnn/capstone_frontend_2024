@@ -140,27 +140,27 @@
 </style>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import SideBar from '@/components/SideBar.vue'
 // import HelpButton from '@/components/HelpButton.vue';
 import axiosInstance from '@/axiosInstance'
-// import { initializeEcho } from '@/echo'
+import { initializeEcho } from '@/echo'
 
-// const echo = initializeEcho()
+const echo = initializeEcho()
 
-// const userId = ref(localStorage.getItem('user_id'))
+const userId = ref(localStorage.getItem('user_id'))
 
-// onMounted(async () => {
-//   echo
-//     .private(`user.${userId.value}`)
-//     .listen('PendingBookAccepted', value => {
-//       notifications.value.unshift(value)
-//     })
-// })
+onMounted(async () => {
+  echo
+    .private(`user.${userId.value}`)
+    .listen('PendingBookAccepted', value => {
+      notifications.value.unshift(value)
+    })
+})
 
-// onUnmounted(async () => {
-//   echo.leave(`user.${userId.value}`)
-// })
+onUnmounted(async () => {
+  echo.leave(`user.${userId.value}`)
+})
 
 const notifications = ref([])
 const isLoading = ref(true)
