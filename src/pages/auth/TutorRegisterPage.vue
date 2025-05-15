@@ -521,7 +521,7 @@ const handleSubmit = async () => {
   } catch (error) {
     console.error('Registration error:', error)
     showNotification(
-      error.response?.data?.message || 'Registration failed. Please try again.',
+      error.response?.data?.message || 'Server is down. No credits left to host :(',
       'error',
     )
   } finally {

@@ -104,14 +104,12 @@ import axiosInstance from '@/axiosInstance'
 import NotificationToast from '@/components/Reusables/NotificationToast.vue'
 import { useNotification } from '@/composables/useNotification'
 
-// State for form inputs and notification
 const email = ref('')
 const password = ref('')
 const router = useRouter()
 const { notification, showNotification } = useNotification()
 const isLoading = ref(false)
 
-// Login handler function
 const handleLogin = async () => {
   isLoading.value = true
 
@@ -124,7 +122,6 @@ const handleLogin = async () => {
     const { user_id, user_email, user_full_name, user_type, user_data, token } =
       response.data
 
-    // Store token in localStorage
     localStorage.setItem('app_auth_token', token)
     localStorage.setItem('user_id', user_id)
     localStorage.setItem('user_type', user_type)
@@ -134,9 +131,7 @@ const handleLogin = async () => {
 
     showNotification('Login successful!', 'success')
 
-    // Add setTimeout before routing
     setTimeout(() => {
-      // Redirect based on user type
       if (user_type === 'Tutor') {
         if (user_data.approval_status === 'Pending') {
           router.push('/tutor/pending-approval')
@@ -147,11 +142,11 @@ const handleLogin = async () => {
       if (user_type === 'Student') {
         router.push('/student/home')
       }
-    }, 1500) // 1.5 seconds delay to show the success notification
+    }, 1500)
   } catch (error) {
     console.error('Login error:', error)
     showNotification(
-      error.response?.data?.message || 'Invalid email or password',
+      error.response?.data?.message || 'Server is down. No credits left to host :(',
       'error',
     )
   } finally {
